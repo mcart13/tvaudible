@@ -5,7 +5,7 @@ Research brief, 29 September 2026. Prepared for Mason. What TradingView offers, 
 ## Bottom line
 
 - **Is the fee real?** Yes. It is Section 22A of TradingView's Terms of Use, word for word. Once a vendor passes 100 users every user is billed, so 101 users cost $3,024.95 a month. No effective date is published; the first count could be 30 September 2026.
-- **Should we build a full TradingView clone?** No. TradingView has 21 chart types, 110+ drawing tools, 100+ brokers and 3.5M instruments. It claims 100M users and ships something new most weeks. Build the slice vendors and their customers need. Of the 140 features graded below, 49 are launch items.
+- **Should we build a full TradingView clone?** No. TradingView has 21 chart types, 110+ drawing tools, 100+ brokers and 3.5M instruments. It claims 100M users and ships something new most weeks. Build the slice vendors and their customers need. Of the 147 features graded below, 53 are launch items.
 - **Is there a market?** Likely, and the $5 share widens it. TradingView's fee only hits vendors over 100 users outside Paid Spaces. For them it takes 50% to 109% of revenue at most major vendors' published prices, and fewer than 5% of Paid Spaces applicants get in. The $5 per member also gives smaller vendors a reason to move. The catch is that their customers need a membership, while TradingView's free plan runs invite-only scripts at no charge. None of this is proven until vendors commit.
 - **Are we first?** No. LuxAlgo, one of the biggest vendors, launched a Pine-native charting platform on 31 August 2026 and owns the leading open-source Pine engine. Our opening is neutrality: other vendors will not want to hand their code and customers to their largest competitor.
 - **Can vendors' Pine code run outside TradingView?** Yes. PyneCore's published tests show it matching TradingView's output on 770 of 819 real scripts. No engine comes with a platform, though. Rendering, alerts, data and access control are ours to build.
@@ -260,9 +260,27 @@ TradingView's own libraries are out. The free Advanced Charts license (June 2026
 
 Recommendation: prototype on KLineChart or a fork of Vela's Apache-2.0 engine, and plan to own the renderer. Pine's visual contract has to look like TradingView: label styles, table layout, text sizing, z-order, line extensions and the 500-object limits. Benchmark every candidate at 100K+ bars against that contract before committing.
 
+## Live chart sessions
+
+A host, whether a vendor or any member, opens a live room on their own chart. Invited members watch in real time as the host changes symbols and timeframes, draws, adds indicators and trades. Think of a weekly charting session or a room that trades the New York open. Nothing in the research shows TradingView offering this. Creators run these sessions today by screen-sharing on Discord, YouTube or Twitch.
+
+How it should work:
+
+- **Share chart state, never prices.** The room carries the host's symbol, timeframe, visible range, drawings, indicator settings and cursor. Each viewer's app loads prices itself under that viewer's own data license. That keeps us inside exchange rules and stops the host from redistributing data.
+- **Every viewer needs the data for what is on screen.** If the host is on CME real-time and a viewer lacks the CME package, that pane locks with an offer to add it. Don't fall back to delayed data, because the host's drawings would not line up with a chart running 10 minutes behind.
+- **Scripts keep their own access rules.** The host's own scripts show for everyone the host admits. Third-party invite-only scripts show only to viewers who have access to them, so no vendor's product leaks through someone else's room.
+- **Follow the host or look around.** Viewers follow the host by default. They can scroll and switch timeframes on their own and jump back to the host's view with one click.
+- **The host controls collaboration.** View-only or collaborative, for everyone or per viewer, changeable at any time. Viewer drawings are labeled with who made them, can be cleared in one action and never change the host's saved layout unless the host keeps them.
+- **Room access uses the script access system.** Grants, expiry and Whop sync work the same way, so a creator can sell a live room like an indicator.
+- **Trades at launch are markers.** The host's trade markers (entry, stop, target, exit) and position tools stream to viewers. Real broker positions need broker integrations, which come later and carry license limits; Tradovate's API license bans competitive products.
+- **Script output is computed once.** Server-side results are shared across every viewer of the same script version, inputs, symbol and timeframe. It is the same shared computation that powers alerts.
+- **Plan for the opening bell.** Thousands of viewers can join the same room in the same minute at the New York open. Late joiners get a snapshot, then the live stream.
+
+Viewers need a membership to join invite-only rooms, plus the data packages for whatever the host shows. Every popular futures room sells CME packages.
+
 ## Feature inventory and grades
 
-Every TradingView feature the research found, graded for a vendor-first competitor. 140 features: 49 P0 Launch, 35 P1 Fast follow, 31 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
+Every TradingView feature the research found, graded for a vendor-first competitor. 147 features: 53 P0 Launch, 36 P1 Fast follow, 33 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
 
 - **P0 Launch:** vendors cannot migrate, or their customers cannot use the scripts, without it. Ships in the first release.
 - **P1 Fast follow:** customers churn back to TradingView within weeks without it. Target the first 90 days after launch.
@@ -385,6 +403,18 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 | Screenshots and share links | P1 Fast follow | S | Both | Snapshots and shareable layouts. | Free marketing when customers share charts. |
 | Table views | P2 Later | S | Trader | Chart data as a table (Sep 2025); Pine tables docked below the chart (Sep 2026). | Useful for dashboard-style scripts. Not urgent. |
 | Export chart data | P3 Park | S | Trader | CSV export from Plus. | Vendors may want exports switched off for their plots to limit reverse engineering. |
+
+### Live sessions
+
+| Feature | Grade | Effort | For | TradingView today | Why this grade |
+|---|---|---|---|---|---|
+| Live chart sessions | P0 Launch | L | Both | No live co-viewing found in the research. Layouts can be shared as links and snapshots; creators stream by screen-sharing on Discord, YouTube or Twitch. | Creators already run weekly sessions and New York open rooms over screen-shares. A native room shows the real chart, lets viewers look around and keeps every viewer inside their own data license. |
+| Room access and host controls | P0 Launch | M | Both | None. | Rooms use the same access system as scripts, including Whop sync. The host can switch collaboration on or off at any time for everyone or per viewer. The host can also mute or remove viewers and clear their drawings. |
+| Viewer data and script checks | P0 Launch | M | Us | Not applicable. Each TradingView account buys its own data add-ons. | Each viewer loads prices under their own license and the room never relays the host's data. Without the needed package the pane locks with an offer to add it. Third-party invite-only scripts show only to viewers with access. |
+| Trades in live sessions | P0 Launch | M | Both | Trading panel and paper trading for your own account; no live broadcast of trades found. | At launch the host's trade markers and position tools stream live. Real broker positions need broker integrations, which come later. |
+| Session chat | P1 Fast follow | S | Trader | Private chats relaunched Aug 2026; public chats retired 30 Sep 2026. | Viewers ask questions during the session. A small build on the room's channel. |
+| Host voice and video | P2 Later | L | Both | Live video Streams appear discontinued (not verified). | Real-time audio and video is its own infrastructure. Hosts keep Discord or YouTube for voice at launch, linked from the room. |
+| Session recordings | P2 Later | M | Both | None found. | Sessions are small event logs, so replays are cheap to store. Replays need historical data rights for each viewer. |
 
 ### Alerts
 
@@ -509,7 +539,7 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 
 ## Recommended launch scope
 
-The durations below are planning assumptions, not quotes. They assume about 6 to 8 experienced engineers and a licensed engine. Building the engine in-house adds months.
+The durations below are planning assumptions, not quotes. They assume about 6 to 8 experienced engineers and a licensed engine. Building the engine in-house adds months. Live chart sessions were added after these estimates; by the effort scale in the feature grades they add roughly 12 to 34 engineer-weeks to the pilot.
 
 ### Validate (Weeks 0 to 3)
 - Get written answers from TradingView support on the effective date, whether Paid Spaces subscribers count and whether free grants count.
@@ -519,6 +549,8 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Run the engine bake-off on design partners' scripts, then decide whether to license or build.
 - Fix the revenue share rule (one payout per member per month) and measure compute per member before announcing the $5.
 - Ask CME about non-pro eligibility and non-display classification. Ask Cboe about the vendor waiver.
+- Ask CME and each exchange we carry to confirm in writing that live rooms need no extra license when they share chart state only and every viewer loads data under their own license.
+- Get counsel's view on paid live trading rooms.
 
 ### Pilot (Months 1 to 4)
 - Every P0 item in the feature grades.
@@ -528,6 +560,7 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Server-side alerts with TradingView-compatible webhooks, email, Telegram and Discord, on shared computation.
 - Public access API with Whop sync, the migration kit, revenue share tracking and code custody.
 - Free tier and membership billing with fair-use limits.
+- Live chart sessions with invite-only rooms, follow mode, host controls and the collaboration switch. Every viewer is checked for data and script access, and trade markers stream live.
 - Vendor vetting, conduct rules and 2FA.
 
 ### Launch (Months 4 to 7)
@@ -536,10 +569,12 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Multi-chart layouts (4, then 8), sync, templates, seconds charts, range bars and volume profile.
 - US stocks through Cboe One. CME futures and continuous contracts once committed demand covers the license.
 - Vendor payouts, checkout sync beyond Whop (Stripe, LaunchPass, Gumroad), Discord role sync, vendor analytics, PWA with push and a first prop-firm integration.
+- Session chat.
 
 ### Scale (Months 7 to 12)
 - The P2 items, in the order vendors ask for them.
 - Pine Screener, parameter optimizer, deep backtesting, native apps, a marketplace, a public API with an MCP server and auto-trading partners.
+- Host voice and video, session recordings and broker-linked trades in live rooms.
 
 ## Pricing we can win with
 
@@ -554,6 +589,7 @@ The model: a free tier, one paid membership and market data add-ons. No tiers.
 
 - Required for real-time data and for buying data packages.
 - Required to use invite-only scripts and to host them. Hosting has no per-user cost, however many users a vendor has.
+- Required to join invite-only live rooms. Viewers also need the data packages for whatever the host shows.
 - Everything else sits in one plan, with fair-use limits on alerts and charts per layout instead of tiers.
 
 **Add-ons**
@@ -566,6 +602,7 @@ The model: a free tier, one paid membership and market data add-ons. No tiers.
 - Access follows the vendor's billing platform. Whop comes first: access is granted on purchase and removed automatically when the vendor subscription ends, which also ends the $5.
 - One payout per member per month. If a member uses several vendors, the $5 goes to the vendor who referred them or is split across their active vendors. Without that rule, a member using three vendors costs $15 on a $14.99 plan.
 - Pay it every month the member stays, not just the first. Recurring income is what makes vendors move their customers.
+- Decide whether live room access earns the $5 the same way script access does.
 
 For a vendor with 1,000 users, TradingView's bill is $29,950 a month. With us the vendor pays one $14.99 membership and earns $5,000 a month.
 
@@ -590,6 +627,9 @@ Severity is my judgment of impact times likelihood.
 - **Medium: The $5 share squeezes margin.** Each member leaves about $9.26 after the share and card fees, before compute, data, support and free users. If costs run high the share is the obvious thing to cut, and cutting it repeats TradingView's move on vendors. Mitigation: measure compute per member in the pilot and set the share before announcing it.
 - **Medium: Payout and tax operations.** Paying vendors brings tax forms, 1099s, holds, clawbacks and payout compliance. Selling memberships abroad adds VAT. Mitigation: a payout provider that handles tax forms, a minimum payout and a holding period.
 - **Medium: Trademark and naming.** "PINE SCRIPT" is a registered US trademark of TradingView (Reg. No. 7,559,746). Use it only to describe compatibility, with the ® and a disclaimer. Keep "Pine", "TV" and "TradingView" out of the product name and domain.
+- **Medium: Live rooms could leak data.** If room traffic ever carries the host's prices, a recording or a screenshot stream, we redistribute data to viewers who have not paid for it. Mitigation: rooms carry chart state only, and every viewer's data stream is checked against that viewer's license.
+- **Medium: Paid trading rooms draw regulators.** Rooms where hosts call trades for paying members can fall under trading-advice rules; in the US, futures advice is overseen by the CFTC and NFA. Mitigation: host terms that make hosts responsible for their content, required disclaimers, no unverified performance claims and counsel before launch.
+- **Medium: Opening-bell load.** Thousands of viewers join the same room in the same minute, and each opens their own data stream. Mitigation: publish-subscribe fan-out for room state, snapshots for late joiners and load tests at real room sizes.
 - **Medium: Webhooks move money.** A hijacked account can fire trades through a customer's bot. Mitigation: 2FA at launch, signed webhooks and alert audit logs.
 - **Low: TradingView pushback on vendors.** House Rules ban links in script content. The only allowed pointer is a link in "Author's instructions" to the vendor's own page, plus the Signature field on Premium and up. The $5 share gives vendors a reason to push harder, so they must move customers through their own sites, Discord and email. TradingView may keep hosting a departed vendor's scripts under the Section 22 license, which is irrevocable but not exclusive.
 - **Low: AGPL contamination.** Engineers copying PineTS or the Vela-PineTS bridge into a closed codebase would create an obligation to publish source. Mitigation: a dependency license policy enforced in CI.
@@ -600,6 +640,9 @@ Severity is my judgment of impact times likelihood.
 - **AI is commoditizing simple indicators.** TradingView's AI Copilot (28 Sep 2026) writes and applies Pine on the chart, and TakeProfit and ChartingLens convert Pine automatically. Simple paid indicators lose pricing power. Value moves to vendors with real research, signals, education and community. Our pitch should target those vendors and sell infrastructure they cannot replace with a prompt.
 - **Vendors will run on both platforms.** Paid Spaces gives discovery that we cannot match early. Expect vendors to keep a TradingView presence and move their heaviest or most profitable users to us. Design for running on both platforms, not for exclusivity.
 - **Prop firms are the unguarded door.** TopstepX embeds TradingView charts but cannot load custom or purchased indicators because of TradingView's licensing. Prop-firm futures traders are a big buyer group for paid scripts, and a prop-firm integration is a distribution channel TradingView's own license blocks.
+- **Live rooms sell data.** Viewers need a membership and the host's data packages to watch live, so every popular futures room sells CME packages and memberships.
+- **Rooms compete with Discord habits.** Creators already run live rooms with voice on Discord, YouTube and Twitch. Without voice at launch hosts will run both apps, so link their voice channel from the room from day one.
+- **A room is a product vendors can sell.** Room access runs on the same grants and Whop sync as scripts. That opens a second revenue line for creators and raises the question of whether room access earns the $5.
 - **Agents are becoming a channel.** TradingView shipped an MCP server (public beta 16 Sep 2026, 35 tools). A clean public API makes our platform usable by agents at little extra cost.
 - **Gaming the snapshot is a trap.** The count happens on the last day of the month, so some vendors will try revoking access before month end. TradingView also counts "script usage" and bans rule-dodging, and vendors who get caught lose everything. Expect some banned vendors to show up on our doorstep, which feeds the adverse-selection risk.
 
@@ -617,6 +660,9 @@ Severity is my judgment of impact times likelihood.
 | CME non-pro eligibility without order routing | Futures pricing | Written answer from CME market data (marketdata@cmegroup.com) |
 | Crypto display rights | Data sourcing | Aggregator warranties and indemnities, or direct exchange licenses |
 | Compute cost per member | Whether $14.99 with a $5 share leaves a margin | Measure in the pilot before announcing the share |
+| Exchange view on live rooms | Whether rooms need extra licenses | Written confirmation from CME and each exchange we carry |
+| Whether room access earns the $5 share | Cost of the share and the creator pitch | Decide before launch |
+| Whether other platforms offer live co-viewing | Positioning | Not covered by this research. Check before marketing it as unique. |
 | How members who use several vendors are credited | The real cost of the $5 share | Decide before launch: one payout per member per month |
 
 ## Sources

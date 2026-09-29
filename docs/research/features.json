@@ -711,6 +711,69 @@
   "why": "Vendors may want exports switched off for their plots to limit reverse engineering."
  },
  {
+  "area": "Live sessions",
+  "feature": "Live chart sessions",
+  "tv": "No live co-viewing found in the research. Layouts can be shared as links and snapshots; creators stream by screen-sharing on Discord, YouTube or Twitch.",
+  "grade": "P0",
+  "effort": "L",
+  "who": "Both",
+  "why": "Creators already run weekly sessions and New York open rooms over screen-shares. A native room shows the real chart, lets viewers look around and keeps every viewer inside their own data license."
+ },
+ {
+  "area": "Live sessions",
+  "feature": "Room access and host controls",
+  "tv": "None.",
+  "grade": "P0",
+  "effort": "M",
+  "who": "Both",
+  "why": "Rooms use the same access system as scripts, including Whop sync. The host can switch collaboration on or off at any time for everyone or per viewer. The host can also mute or remove viewers and clear their drawings."
+ },
+ {
+  "area": "Live sessions",
+  "feature": "Viewer data and script checks",
+  "tv": "Not applicable. Each TradingView account buys its own data add-ons.",
+  "grade": "P0",
+  "effort": "M",
+  "who": "Us",
+  "why": "Each viewer loads prices under their own license and the room never relays the host's data. Without the needed package the pane locks with an offer to add it. Third-party invite-only scripts show only to viewers with access."
+ },
+ {
+  "area": "Live sessions",
+  "feature": "Trades in live sessions",
+  "tv": "Trading panel and paper trading for your own account; no live broadcast of trades found.",
+  "grade": "P0",
+  "effort": "M",
+  "who": "Both",
+  "why": "At launch the host's trade markers and position tools stream live. Real broker positions need broker integrations, which come later."
+ },
+ {
+  "area": "Live sessions",
+  "feature": "Session chat",
+  "tv": "Private chats relaunched Aug 2026; public chats retired 30 Sep 2026.",
+  "grade": "P1",
+  "effort": "S",
+  "who": "Trader",
+  "why": "Viewers ask questions during the session. A small build on the room's channel."
+ },
+ {
+  "area": "Live sessions",
+  "feature": "Host voice and video",
+  "tv": "Live video Streams appear discontinued (not verified).",
+  "grade": "P2",
+  "effort": "L",
+  "who": "Both",
+  "why": "Real-time audio and video is its own infrastructure. Hosts keep Discord or YouTube for voice at launch, linked from the room."
+ },
+ {
+  "area": "Live sessions",
+  "feature": "Session recordings",
+  "tv": "None found.",
+  "grade": "P2",
+  "effort": "M",
+  "who": "Both",
+  "why": "Sessions are small event logs, so replays are cheap to store. Replays need historical data rights for each viewer."
+ },
+ {
   "area": "Alerts",
   "feature": "Server-side script alerts",
   "tv": "Technical alerts: 0 on Basic, 20 Essential, 100 Plus, 400 Premium, 1,000 Ultimate. Alerts expire after 1 to 2 months below Premium.",
