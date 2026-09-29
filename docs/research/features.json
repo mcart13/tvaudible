@@ -235,21 +235,30 @@
  },
  {
   "area": "Vendor tools",
-  "feature": "Access API and checkout integrations",
+  "feature": "Public access API",
   "tv": "No official API. Vendors run unofficial bots on internal endpoints with their password and two-factor authentication switched off.",
   "grade": "P0",
   "effort": "M",
   "who": "Vendor",
-  "why": "Vendors keep Stripe, Whop or their own checkout and grant access automatically. Fixes TradingView's worst vendor pain point."
+  "why": "The foundation every billing integration plugs into. Fixes TradingView's worst vendor pain point."
  },
  {
   "area": "Vendor tools",
-  "feature": "Usage-based seat counting",
-  "tv": "Month-end snapshot of users with access, from grant and usage records.",
+  "feature": "Whop sync",
+  "tv": "Whop's TradingView app has buyers enter a TradingView username to claim access.",
   "grade": "P0",
-  "effort": "S",
+  "effort": "M",
   "who": "Vendor",
-  "why": "Charge only for users who actually used a script that month, so lifetime customers who went quiet cost nothing."
+  "why": "Most vendors already sell on Whop. Grant access on purchase and remove it when the vendor subscription ends, which also stops the $5 share. Linking each purchase to a platform account is the hard part."
+ },
+ {
+  "area": "Vendor tools",
+  "feature": "Revenue share tracking",
+  "tv": "None. TradingView charges vendors $29.95 per user once they pass 100 users.",
+  "grade": "P0",
+  "effort": "M",
+  "who": "Vendor",
+  "why": "$5 a month per active member who still has access to the vendor's script. One payout per member per month, credited to the referring vendor or split. Vendors need referral links and a statement they can check."
  },
  {
   "area": "Vendor tools",
@@ -294,16 +303,34 @@
   "grade": "P0",
   "effort": "M",
   "who": "Us",
-  "why": "Early arrivals may include vendors TradingView rejected. Without vetting we inherit their disputes and reputation."
+  "why": "Free hosting and a $5 share attract everyone, including vendors TradingView rejected. Vetting protects customers and the payout pool."
  },
  {
   "area": "Vendor tools",
-  "feature": "Native checkout and payouts",
-  "tv": "Paid Spaces only: monthly plans, web purchase, TradingView as merchant of record, PayPal payouts in USD, 0% fee for now.",
+  "feature": "Vendor payouts",
+  "tv": "Paid Spaces pays monthly through PayPal in USD after up to 30 days of settlement, with a $100 minimum and W-9 or W-8 forms at $600.",
   "grade": "P1",
+  "effort": "M",
+  "who": "Vendor",
+  "why": "Tax forms, a minimum payout, a holding period and clawbacks on refunds and chargebacks. First payouts fall due after the hold, so this can trail launch by weeks."
+ },
+ {
+  "area": "Vendor tools",
+  "feature": "Checkout sync beyond Whop",
+  "tv": "None official.",
+  "grade": "P1",
+  "effort": "S",
+  "who": "Vendor",
+  "why": "Stripe, LaunchPass and Gumroad on the same access API, so vendors are not forced onto Whop."
+ },
+ {
+  "area": "Vendor tools",
+  "feature": "Native checkout for vendor sales",
+  "tv": "Paid Spaces only: monthly plans, web purchase, TradingView as merchant of record, PayPal payouts in USD, 0% fee for now.",
+  "grade": "P2",
   "effort": "L",
   "who": "Vendor",
-  "why": "Answers Paid Spaces' 'skip the admin' pitch. Start with integrations, then add annual, lifetime, trials and coupons."
+  "why": "Vendors keep selling on Whop and similar tools. Build it only if vendors ask."
  },
  {
   "area": "Vendor tools",
@@ -340,15 +367,6 @@
   "effort": "M",
   "who": "Both",
   "why": "Builds an ecosystem over time. Not why paid vendors switch."
- },
- {
-  "area": "Vendor tools",
-  "feature": "Affiliate and referral tools",
-  "tv": "TradingView pays its own affiliates $10 to $400 per plan sale; nothing for vendors.",
-  "grade": "P2",
-  "effort": "S",
-  "who": "Vendor",
-  "why": "Helps vendors grow on our platform. Easy later."
  },
  {
   "area": "Vendor tools",
@@ -600,7 +618,7 @@
   "grade": "P0",
   "effort": "S",
   "who": "Trader",
-  "why": "A packaging choice, not a build. Vendor bundles often need 3 to 5 scripts, so free users on TradingView hit the wall at 2."
+  "why": "A packaging choice, not a build. Cap it on the free tier and keep it generous for members; vendor bundles often need 3 to 5 scripts."
  },
  {
   "area": "Chart workspace",
@@ -888,7 +906,7 @@
   "grade": "P3",
   "effort": "S",
   "who": "Trader",
-  "why": "Delayed distribution still costs $21,840 a year per exchange. Not worth paying for quotes nobody trades on."
+  "why": "Delayed distribution still costs $21,840 a year per exchange, so keep futures off the free tier."
  },
  {
   "area": "Market data",
@@ -1171,12 +1189,12 @@
  },
  {
   "area": "Account",
-  "feature": "Trader plans and billing",
+  "feature": "Free tier plus one membership",
   "tv": "Basic free; Essential $12.95, Plus $29.95, Premium $59.95, Ultimate $199.95 a month billed annually (monthly billing costs more); prices rose about 17 to 20% on 10 Apr 2026.",
-  "grade": "P1",
+  "grade": "P0",
   "effort": "M",
-  "who": "Trader",
-  "why": "Launch free for vendor customers. Paid tiers once there is something extra to sell."
+  "who": "Both",
+  "why": "One paid plan is required for real-time data, data packages and invite-only scripts, so billing ships at launch. Fair-use limits replace tiers."
  },
  {
   "area": "Account",

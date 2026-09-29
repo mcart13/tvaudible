@@ -5,11 +5,11 @@ Research brief, 29 September 2026. Prepared for Mason. What TradingView offers, 
 ## Bottom line
 
 - **Is the fee real?** Yes. It is Section 22A of TradingView's Terms of Use, word for word. Once a vendor passes 100 users every user is billed, so 101 users cost $3,024.95 a month. No effective date is published; the first count could be 30 September 2026.
-- **Should we build a full TradingView clone?** No. TradingView has 21 chart types, 110+ drawing tools, 100+ brokers and 3.5M instruments. It claims 100M users and ships something new most weeks. Build the slice vendors and their customers need. Of the 138 features graded below, 47 are launch items.
-- **Is there a market?** Yes, but narrower than the headline. Only vendors with more than 100 users who sell outside Paid Spaces pay. At most major vendors' published prices the fee takes 50% to 109% of revenue. TradingView admits fewer than 5% of Paid Spaces applicants, so most of those vendors have no cheap exit today.
+- **Should we build a full TradingView clone?** No. TradingView has 21 chart types, 110+ drawing tools, 100+ brokers and 3.5M instruments. It claims 100M users and ships something new most weeks. Build the slice vendors and their customers need. Of the 140 features graded below, 49 are launch items.
+- **Is there a market?** Likely, and the $5 share widens it. TradingView's fee only hits vendors over 100 users outside Paid Spaces. For them it takes 50% to 109% of revenue at most major vendors' published prices, and fewer than 5% of Paid Spaces applicants get in. The $5 per member also gives smaller vendors a reason to move. The catch is that their customers need a membership, while TradingView's free plan runs invite-only scripts at no charge. None of this is proven until vendors commit.
 - **Are we first?** No. LuxAlgo, one of the biggest vendors, launched a Pine-native charting platform on 31 August 2026 and owns the leading open-source Pine engine. Our opening is neutrality: other vendors will not want to hand their code and customers to their largest competitor.
 - **Can vendors' Pine code run outside TradingView?** Yes. PyneCore's published tests show it matching TradingView's output on 770 of 819 real scripts. No engine comes with a platform, though. Rendering, alerts, data and access control are ours to build.
-- **Can we do it at a fraction of the cost?** For vendors, yes: the proposed $2.99 per active user is 10% of TradingView's fee. For traders, yes on crypto and FX. On CME futures and US stocks, no. Exchange fees set the floor, so the best we can do is match TradingView's $9.95 add-ons.
+- **Can we do it at a fraction of the cost?** For vendors, better than that. Hosting costs one membership and each member using their script earns them $5 a month, against TradingView's $29.95 per user. For traders, partly. One membership replaces TradingView's tiers, but at $14.99 it only beats Essential ($14.95 monthly, $12.95 annual) if it includes Plus and Premium features. CME futures and US stocks still carry exchange fees, so the best we can do there is match TradingView's $9.95 add-ons.
 - **Can we call it Pine Script?** No. "PINE SCRIPT" is a registered US trademark of TradingView. We can say "compatible with Pine Script®" with a non-affiliation notice. Keep "Pine", "TV" and "TradingView" out of our name.
 - **Can we test parity against TradingView?** Not until a lawyer signs off. TradingView's Terms ban "creating products or services based on TradingView content". In the closest precedent, a company that tuned its clone against the original's output under a restrictive license was hit with a $79.1M judgment.
 
@@ -55,6 +55,8 @@ At a $40 monthly price the fee takes 75% of revenue at any size above 100 users.
 | 1,000 | $29,950 | $359,400 |
 | 5,000 | $149,750 | $1,797,000 |
 | 20,000 | $599,000 | $7,188,000 |
+
+Under the model in this brief, the same 1,000-user vendor would pay one $14.99 membership and earn $5,000 a month from the revenue share.
 
 ## Paid Spaces, TradingView's storefront
 
@@ -260,7 +262,7 @@ Recommendation: prototype on KLineChart or a fork of Vela's Apache-2.0 engine, a
 
 ## Feature inventory and grades
 
-Every TradingView feature the research found, graded for a vendor-first competitor. 138 features: 47 P0 Launch, 35 P1 Fast follow, 31 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
+Every TradingView feature the research found, graded for a vendor-first competitor. 140 features: 49 P0 Launch, 35 P1 Fast follow, 31 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
 
 - **P0 Launch:** vendors cannot migrate, or their customers cannot use the scripts, without it. Ships in the first release.
 - **P1 Fast follow:** customers churn back to TradingView within weeks without it. Target the first 90 days after launch.
@@ -305,19 +307,21 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 | Feature | Grade | Effort | For | TradingView today | Why this grade |
 |---|---|---|---|---|---|
 | Access grants and expiry | P0 Launch | M | Vendor | Manual username entry in a Manage access dialog with optional expiry dates. Premium plan ($59.95/mo) or higher to publish invite-only. | The core job vendors hire us for. Must handle thousands of users per vendor. |
-| Access API and checkout integrations | P0 Launch | M | Vendor | No official API. Vendors run unofficial bots on internal endpoints with their password and two-factor authentication switched off. | Vendors keep Stripe, Whop or their own checkout and grant access automatically. Fixes TradingView's worst vendor pain point. |
-| Usage-based seat counting | P0 Launch | S | Vendor | Month-end snapshot of users with access, from grant and usage records. | Charge only for users who actually used a script that month, so lifetime customers who went quiet cost nothing. |
+| Public access API | P0 Launch | M | Vendor | No official API. Vendors run unofficial bots on internal endpoints with their password and two-factor authentication switched off. | The foundation every billing integration plugs into. Fixes TradingView's worst vendor pain point. |
+| Whop sync | P0 Launch | M | Vendor | Whop's TradingView app has buyers enter a TradingView username to claim access. | Most vendors already sell on Whop. Grant access on purchase and remove it when the vendor subscription ends, which also stops the $5 share. Linking each purchase to a platform account is the hard part. |
+| Revenue share tracking | P0 Launch | M | Vendor | None. TradingView charges vendors $29.95 per user once they pass 100 users. | $5 a month per active member who still has access to the vendor's script. One payout per member per month, credited to the referring vendor or split. Vendors need referral links and a statement they can check. |
 | Customer migration kit | P0 Launch | S | Vendor | Nothing comparable. | Bulk import of customer lists, invite links and onboarding emails. Switching friction is the biggest risk to the plan. |
 | Source code custody | P0 Launch | M | Vendor | TradingView holds invite-only source privately. | Encryption at rest, audit logs, no routine staff access. One leak ends vendor trust. |
 | Script versioning and updates | P0 Launch | S | Vendor | Vendors publish updates with release notes; public scripts are editable for only 15 minutes after publishing. | Vendors ship fixes weekly. Add staged rollout and rollback, which TradingView lacks. |
 | Third-party code consent check | P0 Launch | S | Us | Vendor Requirements demand explicit permission to reuse others' code in a paid script. | That permission was given for TradingView. Porting may need fresh consent from the original authors. |
-| Vendor vetting and conduct rules | P0 Launch | M | Us | Vendor Requirements, moderator review, House Rules and bans; script pre-moderation since 14 Aug 2026. | Early arrivals may include vendors TradingView rejected. Without vetting we inherit their disputes and reputation. |
-| Native checkout and payouts | P1 Fast follow | L | Vendor | Paid Spaces only: monthly plans, web purchase, TradingView as merchant of record, PayPal payouts in USD, 0% fee for now. | Answers Paid Spaces' 'skip the admin' pitch. Start with integrations, then add annual, lifetime, trials and coupons. |
+| Vendor vetting and conduct rules | P0 Launch | M | Us | Vendor Requirements, moderator review, House Rules and bans; script pre-moderation since 14 Aug 2026. | Free hosting and a $5 share attract everyone, including vendors TradingView rejected. Vetting protects customers and the payout pool. |
+| Vendor payouts | P1 Fast follow | M | Vendor | Paid Spaces pays monthly through PayPal in USD after up to 30 days of settlement, with a $100 minimum and W-9 or W-8 forms at $600. | Tax forms, a minimum payout, a holding period and clawbacks on refunds and chargebacks. First payouts fall due after the hold, so this can trail launch by weeks. |
+| Checkout sync beyond Whop | P1 Fast follow | S | Vendor | None official. | Stripe, LaunchPass and Gumroad on the same access API, so vendors are not forced onto Whop. |
 | Vendor analytics | P1 Fast follow | M | Vendor | A list of users with access. No usage analytics. | Active users, retention and usage per script are easy wins. |
 | Discord and Telegram role sync | P1 Fast follow | S | Vendor | None. Vendors link accounts through third-party bots. | Most vendors run their community on Discord. Access tied to roles removes manual admin. |
+| Native checkout for vendor sales | P2 Later | L | Vendor | Paid Spaces only: monthly plans, web purchase, TradingView as merchant of record, PayPal payouts in USD, 0% fee for now. | Vendors keep selling on Whop and similar tools. Build it only if vendors ask. |
 | Marketplace and discovery | P2 Later | M | Both | Paid Spaces marketplace: 47 spaces on 29 Sep 2026, $4.99 to $199 a month, admission under 5% of applicants. | Vendors bring their own customers first. Discovery matters once there is a trader base. |
 | Open and protected publishing | P2 Later | M | Both | 150,000+ community scripts, about half open source; publishing capped at 5 public scripts a day and 15 a month since Aug 2026. | Builds an ecosystem over time. Not why paid vendors switch. |
-| Affiliate and referral tools | P2 Later | S | Vendor | TradingView pays its own affiliates $10 to $400 per plan sale; nothing for vendors. | Helps vendors grow on our platform. Easy later. |
 | Team seats for vendors | P2 Later | S | Vendor | One account per vendor profile. | Larger vendors have staff for access and support. |
 
 ### Chart types
@@ -370,7 +374,7 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 |---|---|---|---|---|---|
 | Chart renderer | P0 Launch | XL | Us | Proprietary renderer. The free Advanced Charts library license forbids competing products. | Pine drawings, labels, tables and z-order must look like TradingView. Prototype on an Apache-2.0 library, then own the renderer. |
 | Saved layouts | P0 Launch | M | Trader | 1 layout on Basic, 5 Essential, 10 Plus, unlimited Premium and up. | Losing a setup on refresh is unacceptable. |
-| Indicators per chart | P0 Launch | S | Trader | 2 on Basic, 5 Essential, 10 Plus, 25 Premium, 50 Ultimate. | A packaging choice, not a build. Vendor bundles often need 3 to 5 scripts, so free users on TradingView hit the wall at 2. |
+| Indicators per chart | P0 Launch | S | Trader | 2 on Basic, 5 Essential, 10 Plus, 25 Premium, 50 Ultimate. | A packaging choice, not a build. Cap it on the free tier and keep it generous for members; vendor bundles often need 3 to 5 scripts. |
 | Themes and chart colors | P0 Launch | S | Trader | Light and dark themes with full color control. | Cheap and expected. |
 | Multi-chart layouts | P1 Fast follow | M | Trader | 1, 2, 4, 8 or 16 charts per tab by plan. | Start at 4, then 8. OpenMarket gives 16 free since 27 Sep 2026, so this is table stakes for a challenger. |
 | Symbol, interval, crosshair and time sync | P1 Fast follow | M | Trader | Sync across charts and across desktop windows with tab linking. | Multi-timeframe analysis depends on it. |
@@ -418,7 +422,7 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 | US stocks | P1 Fast follow | L | Trader | Cboe One real-time free; NYSE, Nasdaq and Arca $3 each or a $9.95 bundle non-pro. | Cboe One Summary costs $0.25 per user with a 12-month distributor-fee waiver for new vendors. Cheap enough to follow right after launch. |
 | Indices | P2 Later | M | Trader | S&P DJI indices $10 a month non-pro; Cboe Global Indices $9.95. | Separate licenses. Use futures or ETFs as proxies first. |
 | Bring-your-own broker data | P3 Park | M | Trader | Broker verification only waives TradingView's own data charge; TradingView still streams from its licensed feed. | Avoids exchange licensing only if data never touches our servers, which rules out server-side scripts and alerts. Tradovate's API license also bans competitive products and AGPL code. |
-| Free delayed futures quotes | P3 Park | S | Trader | CME data free with a 10-minute delay on every plan. | Delayed distribution still costs $21,840 a year per exchange. Not worth paying for quotes nobody trades on. |
+| Free delayed futures quotes | P3 Park | S | Trader | CME data free with a 10-minute delay on every plan. | Delayed distribution still costs $21,840 a year per exchange, so keep futures off the free tier. |
 | International stocks and futures | P3 Park | XL | Trader | 100+ stock and futures exchanges; most delayed 15 minutes, paid add-ons per exchange. | Expensive long tail. |
 | Bonds, economic data and options data | P3 Park | L | Trader | Government and corporate bonds, 300 to 400+ economic metrics, OPRA, CME and Eurex options. | Little overlap with script buyers. |
 
@@ -484,7 +488,7 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 | Feature | Grade | Effort | For | TradingView today | Why this grade |
 |---|---|---|---|---|---|
 | Accounts, sign-in and 2FA | P0 Launch | S | Both | Email and social sign-in; 2FA is required before webhooks work. | Webhooks move money, so 2FA ships at launch. |
-| Trader plans and billing | P1 Fast follow | M | Trader | Basic free; Essential $12.95, Plus $29.95, Premium $59.95, Ultimate $199.95 a month billed annually (monthly billing costs more); prices rose about 17 to 20% on 10 Apr 2026. | Launch free for vendor customers. Paid tiers once there is something extra to sell. |
+| Free tier plus one membership | P0 Launch | M | Both | Basic free; Essential $12.95, Plus $29.95, Premium $59.95, Ultimate $199.95 a month billed annually (monthly billing costs more); prices rose about 17 to 20% on 10 Apr 2026. | One paid plan is required for real-time data, data packages and invite-only scripts, so billing ships at launch. Fair-use limits replace tiers. |
 | Help center and support | P1 Fast follow | M | Both | Help center; no support on Basic, ticket support on paid plans, weekdays only. | Vendors will forward their customers' problems to us. |
 | Localization | P2 Later | M | Trader | Interface in many languages (19 in the mobile apps). | Many vendor audiences are non-English. Add the top languages from vendor data. |
 
@@ -513,6 +517,7 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Interview 20 vendors with more than 100 users outside Paid Spaces. Sign 3 to 5 design partners with letters of intent and consent to test their scripts.
 - Counsel reviews Terms Section 3, trademark use, the clean-room process, test data and an AGPL policy.
 - Run the engine bake-off on design partners' scripts, then decide whether to license or build.
+- Fix the revenue share rule (one payout per member per month) and measure compute per member before announcing the $5.
 - Ask CME about non-pro eligibility and non-display classification. Ask Cboe about the vendor waiver.
 
 ### Pilot (Months 1 to 4)
@@ -521,7 +526,8 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Web chart with the core drawing set, top 30 built-ins, saved layouts and watchlists with TradingView import.
 - Crypto and FX data matched per symbol to TradingView's sources.
 - Server-side alerts with TradingView-compatible webhooks, email, Telegram and Discord, on shared computation.
-- Vendor access API, Whop and Stripe integrations, the migration kit, usage-based seat counting and code custody.
+- Public access API with Whop sync, the migration kit, revenue share tracking and code custody.
+- Free tier and membership billing with fair-use limits.
 - Vendor vetting, conduct rules and 2FA.
 
 ### Launch (Months 4 to 7)
@@ -529,7 +535,7 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Strategy report, Bar Replay, v4 scripts and lower-timeframe requests.
 - Multi-chart layouts (4, then 8), sync, templates, seconds charts, range bars and volume profile.
 - US stocks through Cboe One. CME futures and continuous contracts once committed demand covers the license.
-- PWA with push, vendor analytics, native checkout, Discord role sync and a first prop-firm integration.
+- Vendor payouts, checkout sync beyond Whop (Stripe, LaunchPass, Gumroad), Discord role sync, vendor analytics, PWA with push and a first prop-firm integration.
 
 ### Scale (Months 7 to 12)
 - The P2 items, in the order vendors ask for them.
@@ -537,39 +543,55 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 
 ## Pricing we can win with
 
-This is a proposal to test with design partners, not a validated price.
+The model: a free tier, one paid membership and market data add-ons. No tiers.
 
-**Vendors**
+**Free tier**
 
-- **Free up to 100 active users.** Same threshold as TradingView, so a small vendor never pays more with us.
-- **$2.99 per active user per month above 100.** That is 10% of TradingView's fee. "Active" means the customer loaded the script that month, not "had access on the last day". Lifetime customers who stopped using the product cost the vendor nothing.
-- **Or 5% of revenue if the vendor sells through our checkout** (once native checkout ships). That is a quarter of the 20% norm at TrendSpider, MQL5 and TakeProfit. TradingView's Paid Spaces is at 0% for now.
+- Charts with delayed data, built-in indicators and a capped number of indicators per chart.
+- No invite-only scripts, no real-time data and no futures. Delayed CME data still costs about $7,280 a month to distribute.
 
-At 1,000 active users that is $2,691 a month with us against $29,950 at TradingView, a saving of $327,108 a year.
+**Membership (working number: $14.99 a month)**
 
-**Traders**
+- Required for real-time data and for buying data packages.
+- Required to use invite-only scripts and to host them. Hosting has no per-user cost, however many users a vendor has.
+- Everything else sits in one plan, with fair-use limits on alerts and charts per layout instead of tiers.
 
-- **Free for customers of vendors on the platform.** Vendor scripts, real-time crypto and FX, alerts on vendor scripts with webhooks and no expiry, 10 indicators per chart, 4 charts per layout, 20,000 bars of history.
-- **Pro at about $9.99 a month.** 8 to 16 charts, more alerts, seconds charts, Bar Replay and deeper history. TradingView gates seconds charts behind Premium at $59.95.
-- **Exchange data at cost plus a small margin.** CME near TradingView's $9.95, US stocks from Cboe One.
+**Add-ons**
 
-The seat price has to cover compute and data per active user. Compute per user is unknown until the pilot measures it, so publish prices only after that.
+- Market data packages at cost plus a small margin: CME near TradingView's $9.95, US stocks from Cboe One.
+
+**Vendor revenue share**
+
+- A vendor earns $5 a month for each member who is active with us and still has access to that vendor's script.
+- Access follows the vendor's billing platform. Whop comes first: access is granted on purchase and removed automatically when the vendor subscription ends, which also ends the $5.
+- One payout per member per month. If a member uses several vendors, the $5 goes to the vendor who referred them or is split across their active vendors. Without that rule, a member using three vendors costs $15 on a $14.99 plan.
+- Pay it every month the member stays, not just the first. Recurring income is what makes vendors move their customers.
+
+For a vendor with 1,000 users, TradingView's bill is $29,950 a month. With us the vendor pays one $14.99 membership and earns $5,000 a month.
+
+**What to settle before announcing it**
+
+- **The price against Essential.** TradingView's Essential plan costs $14.95 billed monthly or $12.95 billed annually and includes webhooks. At $14.99 the membership is only cheaper if it includes what TradingView sells in Plus and Premium: 100+ alerts, 8 charts per layout, seconds charts and 20K bars. Otherwise price it under $12.95.
+- **For many script buyers the membership is a new cost.** TradingView lets free Basic accounts run invite-only scripts; only publishing them needs a paid plan. The pitch to those buyers has to rest on what the membership includes.
+- **Margin.** $14.99 minus the $5 share minus about $0.73 in card fees leaves about $9.26 per member for compute, data, support and every free-tier user. Compute per member is unknown until the pilot measures it. Measure it before promising the $5 in public, because cutting it later would repeat TradingView's move on vendors.
+- **Payout operations.** Tax forms (W-9, W-8BEN), 1099s for US vendors, a minimum payout, a holding period (Paid Spaces holds up to 30 days) and clawbacks on refunds and chargebacks.
 
 ## Risks and second-order effects
 
 Severity is my judgment of impact times likelihood.
 
-- **High: TradingView controls our wedge.** Section 22A says TradingView "may change the Technology Fee at any time on written notice". It can cut the fee, exempt large vendors privately or admit more of them to Paid Spaces at 0%. Any of those removes the switching reason overnight. Mitigation: win on things TradingView will not match (vendor owns the customer, access API, pricing on usage, Discord and Telegram delivery, prop-firm access) and sign design partners to annual terms.
+- **High: TradingView controls our wedge.** Section 22A says TradingView "may change the Technology Fee at any time on written notice". It can cut the fee, exempt large vendors privately or admit more of them to Paid Spaces at 0%. Any of those removes the switching reason overnight. Mitigation: win on things TradingView will not match (the vendor owns the customer, a $5 monthly share per member, an access API, Discord and Telegram delivery, prop-firm access) and sign design partners to annual terms.
 - **High: LuxAlgo is ahead and owns the leading engine.** It has a live Pine platform, bundled data and a brand. Mitigation: be the neutral host that does not sell indicators, and do not make our core depend on LuxAlgo's license.
-- **High: Traders do not want to leave TradingView.** Vendors will not move if customers churn during the move. Mitigation: free for vendor customers, one-click watchlist import, identical alert and webhook behavior, support for running both platforms during a transition and prop-firm distribution.
+- **High: Traders do not want to leave TradingView.** Vendors will not move if customers churn during the move. Mitigation: a membership priced against TradingView's Essential plan, one-click watchlist import, identical alert and webhook behavior, support for running both platforms during a transition and prop-firm distribution.
 - **High: Parity failures kill trust.** A signal that differs from TradingView by one bar produces a support ticket from every customer. Parity testing is also legally awkward: Terms Section 3 bars "creating products or services based on TradingView content" and "any processing of TradingView's content". Mitigation: a clean-room engine built from documented semantics, independent test vectors and a lawyer's sign-off before anyone uses TradingView output in testing.
 - **High: Futures and stock data costs.** Exchange licensing is the one cost that does not shrink with good engineering. Mitigation: crypto and FX first, then CME as a pass-through add-on once committed demand covers the fixed licenses. Confirm non-pro eligibility with CME before pricing it.
-- **Medium: Adverse selection of vendors.** The first vendors to arrive may include ones TradingView rejected or banned. They bring refund disputes, performance-claim problems and regulatory attention to "signal selling". Mitigation: vetting, conduct rules modeled on TradingView's Vendor Requirements and no unverified performance claims.
+- **Medium: Adverse selection of vendors.** The first vendors to arrive may include ones TradingView rejected or banned, and free hosting plus a $5 share makes us more attractive to them. They bring refund disputes, performance-claim problems and regulatory attention to "signal selling". Mitigation: vetting, conduct rules modeled on TradingView's Vendor Requirements and no unverified performance claims.
 - **Medium: Code custody.** Vendors hand us their most valuable asset. One leak ends the company. Mitigation: server-side execution only, encryption at rest, audit logs and a SOC 2 plan.
-- **Medium: Merchant-of-record burden.** Taking payments makes us responsible for VAT and sales tax, chargebacks and payout compliance. Mitigation: start with the vendor's own checkout through integrations; add native billing through a merchant-of-record provider later.
+- **Medium: The $5 share squeezes margin.** Each member leaves about $9.26 after the share and card fees, before compute, data, support and free users. If costs run high the share is the obvious thing to cut, and cutting it repeats TradingView's move on vendors. Mitigation: measure compute per member in the pilot and set the share before announcing it.
+- **Medium: Payout and tax operations.** Paying vendors brings tax forms, 1099s, holds, clawbacks and payout compliance. Selling memberships abroad adds VAT. Mitigation: a payout provider that handles tax forms, a minimum payout and a holding period.
 - **Medium: Trademark and naming.** "PINE SCRIPT" is a registered US trademark of TradingView (Reg. No. 7,559,746). Use it only to describe compatibility, with the ® and a disclaimer. Keep "Pine", "TV" and "TradingView" out of the product name and domain.
 - **Medium: Webhooks move money.** A hijacked account can fire trades through a customer's bot. Mitigation: 2FA at launch, signed webhooks and alert audit logs.
-- **Low: TradingView pushback on vendors.** House Rules ban links in script content. The only allowed pointer is a link in "Author's instructions" to the vendor's own page, plus the Signature field on Premium and up. Vendors must move customers through their own sites. TradingView may keep hosting a departed vendor's scripts under the Section 22 license, which is irrevocable but not exclusive.
+- **Low: TradingView pushback on vendors.** House Rules ban links in script content. The only allowed pointer is a link in "Author's instructions" to the vendor's own page, plus the Signature field on Premium and up. The $5 share gives vendors a reason to push harder, so they must move customers through their own sites, Discord and email. TradingView may keep hosting a departed vendor's scripts under the Section 22 license, which is irrevocable but not exclusive.
 - **Low: AGPL contamination.** Engineers copying PineTS or the Vela-PineTS bridge into a closed codebase would create an obligation to publish source. Mitigation: a dependency license policy enforced in CI.
 
 ### What you are not seeing
@@ -594,7 +616,8 @@ Severity is my judgment of impact times likelihood.
 | Whether vendor-supplied TradingView exports can be used for testing | The parity-testing method | Counsel |
 | CME non-pro eligibility without order routing | Futures pricing | Written answer from CME market data (marketdata@cmegroup.com) |
 | Crypto display rights | Data sourcing | Aggregator warranties and indemnities, or direct exchange licenses |
-| Compute cost per active user | Seat pricing | Measure in the pilot |
+| Compute cost per member | Whether $14.99 with a $5 share leaves a margin | Measure in the pilot before announcing the share |
+| How members who use several vendors are credited | The real cost of the $5 share | Decide before launch: one payout per member per month |
 
 ## Sources
 
