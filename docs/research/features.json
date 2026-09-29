@@ -1154,10 +1154,10 @@
   "area": "Research and news",
   "feature": "Economic calendar",
   "tv": "Global economic events with forecasts and actuals, plus chart event markers.",
-  "grade": "P2",
-  "effort": "S",
+  "grade": "P0",
+  "effort": "M",
   "who": "Trader",
-  "why": "Futures and FX traders avoid trading into CPI or payrolls. License a feed or embed a provider."
+  "why": "Launch feature. Scheduled releases such as CPI, payrolls and rate decisions get markers above their bars, next to breaking news. Their times are known in advance, so markers appear before the release and fill in the actual number when it prints. Needs a licensed calendar feed."
  },
  {
   "id": "breaking-news-markers",
