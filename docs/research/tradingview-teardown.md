@@ -282,6 +282,8 @@ Viewers need a membership to join invite-only rooms, plus the data packages for 
 
 Every TradingView feature the research found, graded for a vendor-first competitor. 147 features: 53 P0 Launch, 36 P1 Fast follow, 33 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
 
+On the published page, the owner and contributors can change any grade and save their decisions. Saved decisions are stored with the page, and Claude can pull them into this file.
+
 - **P0 Launch:** vendors cannot migrate, or their customers cannot use the scripts, without it. Ships in the first release.
 - **P1 Fast follow:** customers churn back to TradingView within weeks without it. Target the first 90 days after launch.
 - **P2 Later:** real value, but not a switching reason. Build once the vendor base is paying.

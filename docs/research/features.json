@@ -1,5 +1,6 @@
 [
  {
+  "id": "pine-v6-language-core",
   "area": "Pine runtime",
   "feature": "Pine v6 language core",
   "tv": "v6 is current (late 2024) and gets additions almost monthly: bid and ask, request.footprint, multiline strings, sorting of user-defined types, the once keyword.",
@@ -9,6 +10,7 @@
   "why": "This is the product. Vendors port only if their code compiles and behaves the same with no rewrite."
  },
  {
+  "id": "pine-v5-compatibility",
   "area": "Pine runtime",
   "feature": "Pine v5 compatibility",
   "tv": "v5 scripts keep running; a v6 converter is built into the editor. v6 changed behavior, not just syntax.",
@@ -18,6 +20,7 @@
   "why": "319 of 819 popular public scripts in the largest published test corpus are v5. Vendors will not rewrite during a move."
  },
  {
+  "id": "pine-v4-and-older",
   "area": "Pine runtime",
   "feature": "Pine v4 and older",
   "tv": "Older versions still run; converters exist.",
@@ -27,6 +30,7 @@
   "why": "298 of those 819 scripts are still v4. Some vendors will up-convert first, many will not. Support within 90 days."
  },
  {
+  "id": "execution-model-parity",
   "area": "Pine runtime",
   "feature": "Execution model parity",
   "tv": "Per-call-site state, history operator, var and varip, live-bar rollback on every tick, history buffers sized from the first 244 bars.",
@@ -36,6 +40,7 @@
   "why": "Signals must match bar for bar, including how they repaint live. Every mismatch becomes a support ticket from every customer."
  },
  {
+  "id": "built-in-function-library",
   "area": "Pine runtime",
   "feature": "Built-in function library",
   "tv": "About 940 reference entries: 475 functions, 161 variables and 239 constants across ta, math, str, array, map, matrix and more.",
@@ -45,6 +50,7 @@
   "why": "Every script depends on them. Engines diverge on seeding, na handling and number formatting, so each needs its own tests."
  },
  {
+  "id": "request-security",
   "area": "Pine runtime",
   "feature": "request.security",
   "tv": "Other symbols and timeframes with lookahead and gaps options; dynamic requests in v6; 40 unique calls (64 on Ultimate).",
@@ -54,6 +60,7 @@
   "why": "Used in 25% of public v6 scripts. Lookahead and confirmation rules decide whether signals repaint."
  },
  {
+  "id": "request-security-lower-tf",
   "area": "Pine runtime",
   "feature": "request.security_lower_tf",
   "tv": "Intrabar data arrays from lower timeframes, 100K to 200K intrabars by plan.",
@@ -63,6 +70,7 @@
   "why": "Only 1.6% of public v6 scripts use it, but volume-delta style tools depend on it."
  },
  {
+  "id": "fundamental-and-event-requests",
   "area": "Pine runtime",
   "feature": "Fundamental and event requests",
   "tv": "request.financial (FactSet), request.earnings, request.dividends, request.splits, request.economic.",
@@ -72,6 +80,7 @@
   "why": "0.3% of public v6 scripts. Needs a fundamentals license, and output can never match TradingView's FactSet numbers exactly."
  },
  {
+  "id": "request-footprint",
   "area": "Pine runtime",
   "feature": "request.footprint",
   "tv": "Volume footprint data in Pine since Jan 2026, Premium and Ultimate only, one call per script.",
@@ -81,6 +90,7 @@
   "why": "Needs tick data and a footprint pipeline. Too new for vendor catalogs to depend on."
  },
  {
+  "id": "deprecated-data-requests",
   "area": "Pine runtime",
   "feature": "Deprecated data requests",
   "tv": "request.seed (Pine Seeds) accepts no new repos; request.quandl is legacy.",
@@ -90,6 +100,7 @@
   "why": "Commercial scripts should not depend on them."
  },
  {
+  "id": "plots-and-chart-styling",
   "area": "Pine runtime",
   "feature": "Plots and chart styling",
   "tv": "Up to 64 plot counts per script: plot, plotshape, plotchar, plotarrow, plotcandle, plotbar, hline, fill, bgcolor, barcolor.",
@@ -99,6 +110,7 @@
   "why": "What customers look at. Styles, colors, offsets and display flags must render identically."
  },
  {
+  "id": "drawing-objects-from-code",
   "area": "Pine runtime",
   "feature": "Drawing objects from code",
   "tv": "Up to 500 lines, boxes and labels, 100 polylines and 9 tables per script, from 10,000 bars back to 500 bars forward.",
@@ -108,6 +120,7 @@
   "why": "Tables appear in 24% of public v6 scripts, labels 22%, lines 17%, boxes 11%. Smart-money products are mostly drawings."
  },
  {
+  "id": "script-inputs-and-settings-dialog",
   "area": "Pine runtime",
   "feature": "Script inputs and settings dialog",
   "tv": "13 input types with groups, inline rows, tooltips, active flags and confirm (click on chart to pick a value).",
@@ -117,6 +130,7 @@
   "why": "Customers use the settings every day, and vendors write their docs around them."
  },
  {
+  "id": "indicator-on-indicator-sources",
   "area": "Pine runtime",
   "feature": "Indicator-on-indicator sources",
   "tv": "input.source can read another script's plot; limits of 1 on Basic up to 49 on Ultimate.",
@@ -126,6 +140,7 @@
   "why": "Common when customers stack a vendor's tools. Not needed for a single script to work."
  },
  {
+  "id": "alert-functions-in-code",
   "area": "Pine runtime",
   "feature": "Alert functions in code",
   "tv": "alert() once per bar, at bar close or on every call; alertcondition() in indicators.",
@@ -135,6 +150,7 @@
   "why": "For many customers the alert is what they pay for. The runtime half of the alert service."
  },
  {
+  "id": "strategy-engine",
   "area": "Pine runtime",
   "feature": "Strategy engine",
   "tv": "Broker emulator with market, limit, stop and stop-limit orders, pyramiding, OCA groups, commission, slippage and margin calls; overhauled Jul 2026.",
@@ -144,6 +160,7 @@
   "why": "27% of public v6 scripts call strategy.entry, and bots automate from strategy fills. Fills must follow TradingView's documented intrabar path rules."
  },
  {
+  "id": "libraries",
   "area": "Pine runtime",
   "feature": "Libraries",
   "tv": "Libraries export functions, types, methods and constants; always open source; up to 1M tokens of imports.",
@@ -153,6 +170,7 @@
   "why": "About 5% of public scripts import libraries and fail outright without them. Get library source from vendors or authors, never by scraping."
  },
  {
+  "id": "pine-editor",
   "area": "Pine runtime",
   "feature": "Pine editor",
   "tv": "Side-panel cloud editor with autocomplete, command palette, version history and error messages.",
@@ -162,6 +180,7 @@
   "why": "Vendors must paste, compile and fix code on day one. Basic is enough at launch."
  },
  {
+  "id": "pine-logs",
   "area": "Pine runtime",
   "feature": "Pine Logs",
   "tv": "log.info, log.warning and log.error output panel.",
@@ -171,6 +190,7 @@
   "why": "Cheap, and vendors need it to debug ports."
  },
  {
+  "id": "pine-profiler",
   "area": "Pine runtime",
   "feature": "Pine Profiler",
   "tv": "Per-line execution time profiling.",
@@ -180,6 +200,7 @@
   "why": "Helps heavy scripts. Not a switching reason."
  },
  {
+  "id": "execution-limits-and-sandbox",
   "area": "Pine runtime",
   "feature": "Execution limits and sandbox",
   "tv": "20 s run time on Basic, 40 s on paid plans, 100 s on Ultimate; 500 ms per loop per bar; 2-minute compile; 100K-element collections.",
@@ -189,6 +210,7 @@
   "why": "Multi-tenant safety. Limits must be at least as generous as TradingView's or real scripts fail."
  },
  {
+  "id": "keeping-pace-with-pine-releases",
   "area": "Pine runtime",
   "feature": "Keeping pace with Pine releases",
   "tv": "Language changes ship nearly every month.",
@@ -198,6 +220,7 @@
   "why": "Ongoing cost, not a one-off. Vendors adopt new features and every gap breaks a port."
  },
  {
+  "id": "compatibility-checker",
   "area": "Pine runtime",
   "feature": "Compatibility checker",
   "tv": "Nothing comparable; TradingView is the only place Pine runs natively.",
@@ -207,6 +230,7 @@
   "why": "Upload source, get a report of anything unsupported. The first thing a vendor does with us, and it sets their confidence."
  },
  {
+  "id": "parity-test-suite",
   "area": "Pine runtime",
   "feature": "Parity test suite",
   "tv": "Nothing comparable.",
@@ -216,6 +240,7 @@
   "why": "Independent expected outputs for every built-in and semantic rule. Must not come from automating TradingView (see legal)."
  },
  {
+  "id": "server-side-execution-of-closed-source",
   "area": "Pine runtime",
   "feature": "Server-side execution of closed source",
   "tv": "TradingView runs scripts on its servers; invite-only source never reaches the browser.",
@@ -225,6 +250,7 @@
   "why": "Vendors will not hand over code that customers could extract. Transpiling to JavaScript or WASM obscures but does not protect."
  },
  {
+  "id": "access-grants-and-expiry",
   "area": "Vendor tools",
   "feature": "Access grants and expiry",
   "tv": "Manual username entry in a Manage access dialog with optional expiry dates. Premium plan ($59.95/mo) or higher to publish invite-only.",
@@ -234,6 +260,7 @@
   "why": "The core job vendors hire us for. Must handle thousands of users per vendor."
  },
  {
+  "id": "public-access-api",
   "area": "Vendor tools",
   "feature": "Public access API",
   "tv": "No official API. Vendors run unofficial bots on internal endpoints with their password and two-factor authentication switched off.",
@@ -243,6 +270,7 @@
   "why": "The foundation every billing integration plugs into. Fixes TradingView's worst vendor pain point."
  },
  {
+  "id": "whop-sync",
   "area": "Vendor tools",
   "feature": "Whop sync",
   "tv": "Whop's TradingView app has buyers enter a TradingView username to claim access.",
@@ -252,6 +280,7 @@
   "why": "Most vendors already sell on Whop. Grant access on purchase and remove it when the vendor subscription ends, which also stops the $5 share. Linking each purchase to a platform account is the hard part."
  },
  {
+  "id": "revenue-share-tracking",
   "area": "Vendor tools",
   "feature": "Revenue share tracking",
   "tv": "None. TradingView charges vendors $29.95 per user once they pass 100 users.",
@@ -261,6 +290,7 @@
   "why": "$5 a month per active member who still has access to the vendor's script. One payout per member per month, credited to the referring vendor or split. Vendors need referral links and a statement they can check."
  },
  {
+  "id": "customer-migration-kit",
   "area": "Vendor tools",
   "feature": "Customer migration kit",
   "tv": "Nothing comparable.",
@@ -270,6 +300,7 @@
   "why": "Bulk import of customer lists, invite links and onboarding emails. Switching friction is the biggest risk to the plan."
  },
  {
+  "id": "source-code-custody",
   "area": "Vendor tools",
   "feature": "Source code custody",
   "tv": "TradingView holds invite-only source privately.",
@@ -279,6 +310,7 @@
   "why": "Encryption at rest, audit logs, no routine staff access. One leak ends vendor trust."
  },
  {
+  "id": "script-versioning-and-updates",
   "area": "Vendor tools",
   "feature": "Script versioning and updates",
   "tv": "Vendors publish updates with release notes; public scripts are editable for only 15 minutes after publishing.",
@@ -288,6 +320,7 @@
   "why": "Vendors ship fixes weekly. Add staged rollout and rollback, which TradingView lacks."
  },
  {
+  "id": "third-party-code-consent-check",
   "area": "Vendor tools",
   "feature": "Third-party code consent check",
   "tv": "Vendor Requirements demand explicit permission to reuse others' code in a paid script.",
@@ -297,6 +330,7 @@
   "why": "That permission was given for TradingView. Porting may need fresh consent from the original authors."
  },
  {
+  "id": "vendor-vetting-and-conduct-rules",
   "area": "Vendor tools",
   "feature": "Vendor vetting and conduct rules",
   "tv": "Vendor Requirements, moderator review, House Rules and bans; script pre-moderation since 14 Aug 2026.",
@@ -306,6 +340,7 @@
   "why": "Free hosting and a $5 share attract everyone, including vendors TradingView rejected. Vetting protects customers and the payout pool."
  },
  {
+  "id": "vendor-payouts",
   "area": "Vendor tools",
   "feature": "Vendor payouts",
   "tv": "Paid Spaces pays monthly through PayPal in USD after up to 30 days of settlement, with a $100 minimum and W-9 or W-8 forms at $600.",
@@ -315,6 +350,7 @@
   "why": "Tax forms, a minimum payout, a holding period and clawbacks on refunds and chargebacks. First payouts fall due after the hold, so this can trail launch by weeks."
  },
  {
+  "id": "checkout-sync-beyond-whop",
   "area": "Vendor tools",
   "feature": "Checkout sync beyond Whop",
   "tv": "None official.",
@@ -324,6 +360,7 @@
   "why": "Stripe, LaunchPass and Gumroad on the same access API, so vendors are not forced onto Whop."
  },
  {
+  "id": "native-checkout-for-vendor-sales",
   "area": "Vendor tools",
   "feature": "Native checkout for vendor sales",
   "tv": "Paid Spaces only: monthly plans, web purchase, TradingView as merchant of record, PayPal payouts in USD, 0% fee for now.",
@@ -333,6 +370,7 @@
   "why": "Vendors keep selling on Whop and similar tools. Build it only if vendors ask."
  },
  {
+  "id": "vendor-analytics",
   "area": "Vendor tools",
   "feature": "Vendor analytics",
   "tv": "A list of users with access. No usage analytics.",
@@ -342,6 +380,7 @@
   "why": "Active users, retention and usage per script are easy wins."
  },
  {
+  "id": "discord-and-telegram-role-sync",
   "area": "Vendor tools",
   "feature": "Discord and Telegram role sync",
   "tv": "None. Vendors link accounts through third-party bots.",
@@ -351,6 +390,7 @@
   "why": "Most vendors run their community on Discord. Access tied to roles removes manual admin."
  },
  {
+  "id": "marketplace-and-discovery",
   "area": "Vendor tools",
   "feature": "Marketplace and discovery",
   "tv": "Paid Spaces marketplace: 47 spaces on 29 Sep 2026, $4.99 to $199 a month, admission under 5% of applicants.",
@@ -360,6 +400,7 @@
   "why": "Vendors bring their own customers first. Discovery matters once there is a trader base."
  },
  {
+  "id": "open-and-protected-publishing",
   "area": "Vendor tools",
   "feature": "Open and protected publishing",
   "tv": "150,000+ community scripts, about half open source; publishing capped at 5 public scripts a day and 15 a month since Aug 2026.",
@@ -369,6 +410,7 @@
   "why": "Builds an ecosystem over time. Not why paid vendors switch."
  },
  {
+  "id": "team-seats-for-vendors",
   "area": "Vendor tools",
   "feature": "Team seats for vendors",
   "tv": "One account per vendor profile.",
@@ -378,6 +420,7 @@
   "why": "Larger vendors have staff for access and support."
  },
  {
+  "id": "candles-bars-line-area-and-heikin-ashi",
   "area": "Chart types",
   "feature": "Candles, bars, line, area and Heikin Ashi",
   "tv": "Part of 21 chart types.",
@@ -387,6 +430,7 @@
   "why": "Table stakes. Heikin Ashi is widely used alongside paid scripts."
  },
  {
+  "id": "other-standard-styles",
   "area": "Chart types",
   "feature": "Other standard styles",
   "tv": "Hollow candles, baseline, columns, high-low, HLC area, step line, line with markers.",
@@ -396,6 +440,7 @@
   "why": "Cheap once the renderer exists."
  },
  {
+  "id": "range-bars",
   "area": "Chart types",
   "feature": "Range bars",
   "tv": "Custom range bars from Essential.",
@@ -405,6 +450,7 @@
   "why": "Popular with futures traders, a core buyer group."
  },
  {
+  "id": "renko-kagi-point-and-figure-line-break",
   "area": "Chart types",
   "feature": "Renko, Kagi, Point and Figure, Line Break",
   "tv": "Available on all plans; intraday versions from Plus.",
@@ -414,6 +460,7 @@
   "why": "Niche, and scripts behave differently on synthetic bars, which adds parity work."
  },
  {
+  "id": "volume-footprint-tpo-and-volume-candles",
   "area": "Chart types",
   "feature": "Volume footprint, TPO and volume candles",
   "tv": "Premium and Ultimate only, with alerts on footprint and TPO levels.",
@@ -423,6 +470,7 @@
   "why": "Needs tick data and a new renderer. Order-flow traders already use ATAS or Bookmap."
  },
  {
+  "id": "seconds-intervals",
   "area": "Chart types",
   "feature": "Seconds intervals",
   "tv": "1 to 45 seconds, Premium ($59.95/mo) and Ultimate only.",
@@ -432,6 +480,7 @@
   "why": "Futures scalpers want them and TradingView charts $59.95 a month. Offering them on a cheap tier is a direct poach."
  },
  {
+  "id": "tick-intervals",
   "area": "Chart types",
   "feature": "Tick intervals",
   "tv": "1, 10, 100 and 1,000 ticks on nearly all exchanges since May 2025; Ultimate only ($199.95/mo).",
@@ -441,6 +490,7 @@
   "why": "Needs full tick history and storage. Seconds first."
  },
  {
+  "id": "custom-intervals",
   "area": "Chart types",
   "feature": "Custom intervals",
   "tv": "Any count of seconds, minutes, hours, days, weeks or months, from Essential.",
@@ -450,6 +500,7 @@
   "why": "Many scripts are tuned to odd timeframes such as 3m or 45m."
  },
  {
+  "id": "standard-intervals-and-history-depth",
   "area": "Chart data",
   "feature": "Standard intervals and history depth",
   "tv": "1 minute to 1 month; 5K intraday bars on Basic, 10K Essential and Plus, 20K Premium, 40K Ultimate.",
@@ -459,6 +510,7 @@
   "why": "Scripts need warm-up history. 20K bars on a free account beats every TradingView tier below Premium."
  },
  {
+  "id": "symbol-search",
   "area": "Chart data",
   "feature": "Symbol search",
   "tv": "Search across 3.5M instruments from hundreds of feeds.",
@@ -468,6 +520,7 @@
   "why": "Fast and forgiving search over a clean symbol master per data source."
  },
  {
+  "id": "timezones-sessions-and-extended-hours",
   "area": "Chart data",
   "feature": "Timezones, sessions and extended hours",
   "tv": "Chart timezone, regular and extended sessions on all plans, 24h overnight session for some US stocks since Jul 2026.",
@@ -477,6 +530,7 @@
   "why": "Pine time functions depend on sessions. Wrong sessions mean wrong signals."
  },
  {
+  "id": "continuous-futures-and-rolls",
   "area": "Chart data",
   "feature": "Continuous futures and rolls",
   "tv": "Continuous contracts with optional back-adjustment.",
@@ -486,6 +540,7 @@
   "why": "Needed the day futures data ships, and must match TradingView's roll rules for parity."
  },
  {
+  "id": "compare-and-overlay-symbols",
   "area": "Chart data",
   "feature": "Compare and overlay symbols",
   "tv": "Overlay symbols in percent or price, all plans.",
@@ -495,6 +550,7 @@
   "why": "Nice to have."
  },
  {
+  "id": "spread-and-ratio-charts",
   "area": "Chart data",
   "feature": "Spread and ratio charts",
   "tv": "Custom formulas across symbols; intraday from Plus.",
@@ -504,6 +560,7 @@
   "why": "Pairs traders use them. Low priority."
  },
  {
+  "id": "core-drawing-set",
   "area": "Drawing tools",
   "feature": "Core drawing set",
   "tv": "Trend line, ray, horizontal and vertical lines, rectangle, channel, Fibonacci retracement and extension, text, arrows, measure, long and short position tools.",
@@ -513,6 +570,7 @@
   "why": "Every trader marks levels next to the paid script. The position tool gets used constantly."
  },
  {
+  "id": "full-drawing-library",
   "area": "Drawing tools",
   "feature": "Full drawing library",
   "tv": "110+ tools in 8 groups including pitchforks, Gann, harmonic patterns, Elliott waves, cycles, brushes, icons and embedded posts.",
@@ -522,6 +580,7 @@
   "why": "Long tail. Add the most requested ones after launch."
  },
  {
+  "id": "drawing-ergonomics",
   "area": "Drawing tools",
   "feature": "Drawing ergonomics",
   "tv": "Magnets (including snap to indicators), templates, lock and hide, object tree, favorites toolbar.",
@@ -531,6 +590,7 @@
   "why": "Missing ergonomics feel broken to TradingView users even when the tools exist."
  },
  {
+  "id": "drawings-synced-across-layouts-and-timeframes",
   "area": "Drawing tools",
   "feature": "Drawings synced across layouts and timeframes",
   "tv": "Drawings sync across charts of the same symbol.",
@@ -540,6 +600,7 @@
   "why": "Expected by multi-timeframe traders."
  },
  {
+  "id": "alerts-on-drawings",
   "area": "Drawing tools",
   "feature": "Alerts on drawings",
   "tv": "Alerts on trend lines, rectangles, Fibonacci and position drawings.",
@@ -549,6 +610,7 @@
   "why": "Common workflow that reuses the alert service."
  },
  {
+  "id": "top-30-built-in-indicators",
   "area": "Indicators",
   "feature": "Top 30 built-in indicators",
   "tv": "400+ built-ins claimed (Help Center documents 209 indicators and 20 strategies).",
@@ -558,6 +620,7 @@
   "why": "Write them in Pine on our engine from public formulas, not TradingView's source. Doubles as runtime testing."
  },
  {
+  "id": "rest-of-the-built-in-library",
   "area": "Indicators",
   "feature": "Rest of the built-in library",
   "tv": "The remaining built-in indicators and strategies.",
@@ -567,6 +630,7 @@
   "why": "Long tail. Community scripts fill it."
  },
  {
+  "id": "volume-profile-tools",
   "area": "Indicators",
   "feature": "Volume profile tools",
   "tv": "7 volume profile indicators (fixed range, anchored, session, visible range, periodic) from Essential.",
@@ -576,6 +640,7 @@
   "why": "Heavily used by futures traders. Needs lower-timeframe data."
  },
  {
+  "id": "pattern-recognition",
   "area": "Indicators",
   "feature": "Pattern recognition",
   "tv": "44 candlestick patterns on all plans; 16 auto chart patterns on Premium and up; auto Fibonacci.",
@@ -585,6 +650,7 @@
   "why": "Good for marketing, rarely decisive for this audience."
  },
  {
+  "id": "seasonals",
   "area": "Indicators",
   "feature": "Seasonals",
   "tv": "Seasonality charts since Jan 2025.",
@@ -594,6 +660,7 @@
   "why": "Low demand among script buyers."
  },
  {
+  "id": "chart-renderer",
   "area": "Chart workspace",
   "feature": "Chart renderer",
   "tv": "Proprietary renderer. The free Advanced Charts library license forbids competing products.",
@@ -603,6 +670,7 @@
   "why": "Pine drawings, labels, tables and z-order must look like TradingView. Prototype on an Apache-2.0 library, then own the renderer."
  },
  {
+  "id": "saved-layouts",
   "area": "Chart workspace",
   "feature": "Saved layouts",
   "tv": "1 layout on Basic, 5 Essential, 10 Plus, unlimited Premium and up.",
@@ -612,6 +680,7 @@
   "why": "Losing a setup on refresh is unacceptable."
  },
  {
+  "id": "indicators-per-chart",
   "area": "Chart workspace",
   "feature": "Indicators per chart",
   "tv": "2 on Basic, 5 Essential, 10 Plus, 25 Premium, 50 Ultimate.",
@@ -621,6 +690,7 @@
   "why": "A packaging choice, not a build. Cap it on the free tier and keep it generous for members; vendor bundles often need 3 to 5 scripts."
  },
  {
+  "id": "multi-chart-layouts",
   "area": "Chart workspace",
   "feature": "Multi-chart layouts",
   "tv": "1, 2, 4, 8 or 16 charts per tab by plan.",
@@ -630,6 +700,7 @@
   "why": "Start at 4, then 8. OpenMarket gives 16 free since 27 Sep 2026, so this is table stakes for a challenger."
  },
  {
+  "id": "symbol-interval-crosshair-and-time-sync",
   "area": "Chart workspace",
   "feature": "Symbol, interval, crosshair and time sync",
   "tv": "Sync across charts and across desktop windows with tab linking.",
@@ -639,6 +710,7 @@
   "why": "Multi-timeframe analysis depends on it."
  },
  {
+  "id": "templates",
   "area": "Chart workspace",
   "feature": "Templates",
   "tv": "Chart templates and indicator templates.",
@@ -648,6 +720,7 @@
   "why": "Vendors ship recommended templates with their products."
  },
  {
+  "id": "themes-and-chart-colors",
   "area": "Chart workspace",
   "feature": "Themes and chart colors",
   "tv": "Light and dark themes with full color control.",
@@ -657,6 +730,7 @@
   "why": "Cheap and expected."
  },
  {
+  "id": "price-scale-options",
   "area": "Chart workspace",
   "feature": "Price scale options",
   "tv": "Auto, log, percent, indexed to 100, inverted, manual.",
@@ -666,6 +740,7 @@
   "why": "Log scale matters for crypto."
  },
  {
+  "id": "hotkeys-undo-and-redo",
   "area": "Chart workspace",
   "feature": "Hotkeys, undo and redo",
   "tv": "Extensive keyboard shortcuts and a command search.",
@@ -675,6 +750,7 @@
   "why": "Match common TradingView shortcuts so muscle memory carries over."
  },
  {
+  "id": "data-window-and-object-tree",
   "area": "Chart workspace",
   "feature": "Data window and object tree",
   "tv": "Per-bar plot values (floating under the cursor since Jun 2025) and a tree of chart objects.",
@@ -684,6 +760,7 @@
   "why": "Vendors use the data window to support customers."
  },
  {
+  "id": "screenshots-and-share-links",
   "area": "Chart workspace",
   "feature": "Screenshots and share links",
   "tv": "Snapshots and shareable layouts.",
@@ -693,6 +770,7 @@
   "why": "Free marketing when customers share charts."
  },
  {
+  "id": "table-views",
   "area": "Chart workspace",
   "feature": "Table views",
   "tv": "Chart data as a table (Sep 2025); Pine tables docked below the chart (Sep 2026).",
@@ -702,6 +780,7 @@
   "why": "Useful for dashboard-style scripts. Not urgent."
  },
  {
+  "id": "export-chart-data",
   "area": "Chart workspace",
   "feature": "Export chart data",
   "tv": "CSV export from Plus.",
@@ -711,6 +790,7 @@
   "why": "Vendors may want exports switched off for their plots to limit reverse engineering."
  },
  {
+  "id": "live-chart-sessions",
   "area": "Live sessions",
   "feature": "Live chart sessions",
   "tv": "No live co-viewing found in the research. Layouts can be shared as links and snapshots; creators stream by screen-sharing on Discord, YouTube or Twitch.",
@@ -720,6 +800,7 @@
   "why": "Creators already run weekly sessions and New York open rooms over screen-shares. A native room shows the real chart, lets viewers look around and keeps every viewer inside their own data license."
  },
  {
+  "id": "room-access-and-host-controls",
   "area": "Live sessions",
   "feature": "Room access and host controls",
   "tv": "None.",
@@ -729,6 +810,7 @@
   "why": "Rooms use the same access system as scripts, including Whop sync. The host can switch collaboration on or off at any time for everyone or per viewer. The host can also mute or remove viewers and clear their drawings."
  },
  {
+  "id": "viewer-data-and-script-checks",
   "area": "Live sessions",
   "feature": "Viewer data and script checks",
   "tv": "Not applicable. Each TradingView account buys its own data add-ons.",
@@ -738,6 +820,7 @@
   "why": "Each viewer loads prices under their own license and the room never relays the host's data. Without the needed package the pane locks with an offer to add it. Third-party invite-only scripts show only to viewers with access."
  },
  {
+  "id": "trades-in-live-sessions",
   "area": "Live sessions",
   "feature": "Trades in live sessions",
   "tv": "Trading panel and paper trading for your own account; no live broadcast of trades found.",
@@ -747,6 +830,7 @@
   "why": "At launch the host's trade markers and position tools stream live. Real broker positions need broker integrations, which come later."
  },
  {
+  "id": "session-chat",
   "area": "Live sessions",
   "feature": "Session chat",
   "tv": "Private chats relaunched Aug 2026; public chats retired 30 Sep 2026.",
@@ -756,6 +840,7 @@
   "why": "Viewers ask questions during the session. A small build on the room's channel."
  },
  {
+  "id": "host-voice-and-video",
   "area": "Live sessions",
   "feature": "Host voice and video",
   "tv": "Live video Streams appear discontinued (not verified).",
@@ -765,6 +850,7 @@
   "why": "Real-time audio and video is its own infrastructure. Hosts keep Discord or YouTube for voice at launch, linked from the room."
  },
  {
+  "id": "session-recordings",
   "area": "Live sessions",
   "feature": "Session recordings",
   "tv": "None found.",
@@ -774,6 +860,7 @@
   "why": "Sessions are small event logs, so replays are cheap to store. Replays need historical data rights for each viewer."
  },
  {
+  "id": "server-side-script-alerts",
   "area": "Alerts",
   "feature": "Server-side script alerts",
   "tv": "Technical alerts: 0 on Basic, 20 Essential, 100 Plus, 400 Premium, 1,000 Ultimate. Alerts expire after 1 to 2 months below Premium.",
@@ -783,6 +870,7 @@
   "why": "For many customers the alert is the product. No expiry and generous counts beat TradingView's limits outright."
  },
  {
+  "id": "price-alerts",
   "area": "Alerts",
   "feature": "Price alerts",
   "tv": "3 on Basic up to 1,000 on Ultimate; 13 built-in conditions.",
@@ -792,6 +880,7 @@
   "why": "Table stakes."
  },
  {
+  "id": "webhooks-compatible-with-tradingview",
   "area": "Alerts",
   "feature": "Webhooks compatible with TradingView",
   "tv": "From Essential. POST as JSON or plain text, ports 80 and 443, 3-second timeout, 4 fixed source IPs, 2FA required, placeholders such as {{ticker}} and {{strategy.order.action}}, throttle of 15 triggers in 3 minutes.",
@@ -801,6 +890,7 @@
   "why": "TradersPost, PineConnector and PickMyTrade parse this format. Matching it keeps customers' automation working with no changes."
  },
  {
+  "id": "email-telegram-and-discord-delivery",
   "area": "Alerts",
   "feature": "Email, Telegram and Discord delivery",
   "tv": "App push, popup, email, webhook, sound and plain-text email. No Discord delivery found.",
@@ -810,6 +900,7 @@
   "why": "Vendors' communities live on Telegram and Discord. Cheap to build."
  },
  {
+  "id": "mobile-push",
   "area": "Alerts",
   "feature": "Mobile push",
   "tv": "Native push through the iOS and Android apps.",
@@ -819,6 +910,7 @@
   "why": "Web push from a PWA covers most of it before native apps."
  },
  {
+  "id": "alert-log",
   "area": "Alerts",
   "feature": "Alert log",
   "tv": "History of triggered alerts.",
@@ -828,6 +920,7 @@
   "why": "Needed for support and for trust in signals."
  },
  {
+  "id": "multi-condition-and-watchlist-alerts",
   "area": "Alerts",
   "feature": "Multi-condition and watchlist alerts",
   "tv": "Multi-condition (up to 5 conditions) from Plus; watchlist alerts: 2 on Premium, 15 on Ultimate.",
@@ -837,6 +930,7 @@
   "why": "Power-user features. Watchlist alerts are expensive to compute."
  },
  {
+  "id": "alert-schedules-and-presets",
   "area": "Alerts",
   "feature": "Alert schedules and presets",
   "tv": "Notification schedules (Jul 2026) and up to 5 presets.",
@@ -846,6 +940,7 @@
   "why": "Quality of life."
  },
  {
+  "id": "alerts-on-news-fundamentals-and-patterns",
   "area": "Alerts",
   "feature": "Alerts on news, fundamentals and patterns",
   "tv": "Alerts on news flows, financial and valuation metrics, chart patterns, TPO and footprint.",
@@ -855,6 +950,7 @@
   "why": "Depends on data we will not carry early."
  },
  {
+  "id": "shared-computation-for-alerts",
   "area": "Alerts",
   "feature": "Shared computation for alerts",
   "tv": "Not applicable.",
@@ -864,6 +960,7 @@
   "why": "Run each script version, input set, symbol and timeframe once and fan out to every subscriber. This is how alerts get cheap enough to price far below TradingView."
  },
  {
+  "id": "strategy-report",
   "area": "Backtesting",
   "feature": "Strategy report",
   "tv": "Renamed from Strategy Tester in Jul 2026: metrics, trades, equity; CSV and XLSX export from Essential.",
@@ -873,6 +970,7 @@
   "why": "Follows the strategy engine. Vendors sell backtests as proof."
  },
  {
+  "id": "bar-replay",
   "area": "Backtesting",
   "feature": "Bar Replay",
   "tv": "Daily data on all plans; minute data for 180 days on Essential, 365 on Plus, all on Premium; seconds on Premium; 7 days of ticks on Ultimate.",
@@ -882,6 +980,7 @@
   "why": "Popular for practice and vendor demos. Needs stored intraday history."
  },
  {
+  "id": "deep-backtesting-and-bar-detalization",
   "area": "Backtesting",
   "feature": "Deep Backtesting and bar detalization",
   "tv": "Premium and up: any date range, up to 2M bars; intrabar fills from lower timeframes (formerly Bar Magnifier).",
@@ -891,6 +990,7 @@
   "why": "Valued by strategy vendors. Builds on the strategy engine."
  },
  {
+  "id": "parameter-optimization",
   "area": "Backtesting",
   "feature": "Parameter optimization",
   "tv": "No native input optimizer.",
@@ -900,6 +1000,7 @@
   "why": "A real gap in TradingView and a good differentiator once the engine is solid."
  },
  {
+  "id": "replay-trading",
   "area": "Backtesting",
   "feature": "Replay trading",
   "tv": "Paper trades during Bar Replay.",
@@ -909,6 +1010,7 @@
   "why": "Practice feature. Not a switching reason."
  },
  {
+  "id": "crypto-spot-and-perpetuals",
   "area": "Market data",
   "feature": "Crypto spot and perpetuals",
   "tv": "50+ crypto exchanges and DEX venues, real-time free.",
@@ -918,6 +1020,7 @@
   "why": "Biggest share of script buyers and cheap per user, but exchanges' free APIs are not licensed for commercial display. Use a licensed aggregator (CoinAPI from $249/mo) with venue-level candles so they match TradingView."
  },
  {
+  "id": "forex",
   "area": "Market data",
   "feature": "Forex",
   "tv": "Broker FX and CFD feeds (OANDA, FXCM, FOREX.com and others), real-time free.",
@@ -927,6 +1030,7 @@
   "why": "Core audience for smart-money products. FX prices differ by broker, so parity needs the feeds customers use on TradingView. Vendors with display rights start around $149/mo."
  },
  {
+  "id": "us-index-futures",
   "area": "Market data",
   "feature": "US index futures",
   "tv": "CME Group delayed 10 minutes by default; real-time bundle $9.95 a month non-pro.",
@@ -936,6 +1040,7 @@
   "why": "Core buyer group, but real-time distribution costs about $9,760/mo in fixed CME licenses plus $4.65 per user. Non-pro rates may also require a futures account. Pilot with crypto and FX vendors; add CME when committed demand covers it."
  },
  {
+  "id": "us-stocks",
   "area": "Market data",
   "feature": "US stocks",
   "tv": "Cboe One real-time free; NYSE, Nasdaq and Arca $3 each or a $9.95 bundle non-pro.",
@@ -945,6 +1050,7 @@
   "why": "Cboe One Summary costs $0.25 per user with a 12-month distributor-fee waiver for new vendors. Cheap enough to follow right after launch."
  },
  {
+  "id": "data-parity-with-tradingview",
   "area": "Market data",
   "feature": "Data parity with TradingView",
   "tv": "Candles depend on the source, session rules, adjustments and futures rolls.",
@@ -954,6 +1060,7 @@
   "why": "A perfect engine still gives different signals on different candles. Match TradingView's source and rules per symbol."
  },
  {
+  "id": "bring-your-own-broker-data",
   "area": "Market data",
   "feature": "Bring-your-own broker data",
   "tv": "Broker verification only waives TradingView's own data charge; TradingView still streams from its licensed feed.",
@@ -963,6 +1070,7 @@
   "why": "Avoids exchange licensing only if data never touches our servers, which rules out server-side scripts and alerts. Tradovate's API license also bans competitive products and AGPL code."
  },
  {
+  "id": "free-delayed-futures-quotes",
   "area": "Market data",
   "feature": "Free delayed futures quotes",
   "tv": "CME data free with a 10-minute delay on every plan.",
@@ -972,6 +1080,7 @@
   "why": "Delayed distribution still costs $21,840 a year per exchange, so keep futures off the free tier."
  },
  {
+  "id": "indices",
   "area": "Market data",
   "feature": "Indices",
   "tv": "S&P DJI indices $10 a month non-pro; Cboe Global Indices $9.95.",
@@ -981,6 +1090,7 @@
   "why": "Separate licenses. Use futures or ETFs as proxies first."
  },
  {
+  "id": "international-stocks-and-futures",
   "area": "Market data",
   "feature": "International stocks and futures",
   "tv": "100+ stock and futures exchanges; most delayed 15 minutes, paid add-ons per exchange.",
@@ -990,6 +1100,7 @@
   "why": "Expensive long tail."
  },
  {
+  "id": "bonds-economic-data-and-options-data",
   "area": "Market data",
   "feature": "Bonds, economic data and options data",
   "tv": "Government and corporate bonds, 300 to 400+ economic metrics, OPRA, CME and Eurex options.",
@@ -999,6 +1110,7 @@
   "why": "Little overlap with script buyers."
  },
  {
+  "id": "pine-screener",
   "area": "Screeners",
   "feature": "Pine Screener",
   "tv": "Beta, Premium and up: one script across up to 4,000 symbols on 10 fixed timeframes, last 500 bars; invite-only scripts allowed since Aug 2026.",
@@ -1008,6 +1120,7 @@
   "why": "Strong fit for vendor scripts: scan 50 pairs for today's signals. Build once alerts scale."
  },
  {
+  "id": "crypto-screener",
   "area": "Screeners",
   "feature": "Crypto screener",
   "tv": "Coin, CEX pair (40+ exchanges) and DEX pair screeners.",
@@ -1017,6 +1130,7 @@
   "why": "Cheap on data we already carry."
  },
  {
+  "id": "stock-etf-bond-and-forex-screeners",
   "area": "Screeners",
   "feature": "Stock, ETF, bond and forex screeners",
   "tv": "7 screeners in total with 400 to 500+ fields; AI Screener (Aug 2026) on paid plans.",
@@ -1026,6 +1140,7 @@
   "why": "Needs fundamentals licensing. Finviz and TradingView already do this well."
  },
  {
+  "id": "heatmaps-and-market-overview",
   "area": "Screeners",
   "feature": "Heatmaps and market overview",
   "tv": "Stock, ETF and crypto heatmaps, forex and bond heatmaps, yield curves, Macro Maps, market pages.",
@@ -1035,6 +1150,7 @@
   "why": "Marketing surface more than a daily tool for this audience."
  },
  {
+  "id": "economic-calendar",
   "area": "Research and news",
   "feature": "Economic calendar",
   "tv": "Global economic events with forecasts and actuals, plus chart event markers.",
@@ -1044,6 +1160,7 @@
   "why": "Futures and FX traders avoid trading into CPI or payrolls. License a feed or embed a provider."
  },
  {
+  "id": "news-feed",
   "area": "Research and news",
   "feature": "News feed",
   "tv": "News Flow from 65+ providers with AI summaries of filings.",
@@ -1053,6 +1170,7 @@
   "why": "Expensive licensing and low differentiation."
  },
  {
+  "id": "earnings-dividends-and-ipo-calendars",
   "area": "Research and news",
   "feature": "Earnings, dividends and IPO calendars",
   "tv": "Corporate event calendars.",
@@ -1062,6 +1180,7 @@
   "why": "Stock-only and needs a data license."
  },
  {
+  "id": "fundamentals-and-ratings",
   "area": "Research and news",
   "feature": "Fundamentals and ratings",
   "tv": "Statements, 100+ metrics, Fundamental Graphs, analyst estimates, Fitch and Moody's ratings, Quartr documents with AI summaries.",
@@ -1071,6 +1190,7 @@
   "why": "Different customer. Link out."
  },
  {
+  "id": "options-tools",
   "area": "Research and news",
   "feature": "Options tools",
   "tv": "Chains with greeks, strategy builder, volatility curves, options volume profile.",
@@ -1080,6 +1200,7 @@
   "why": "Different product and expensive OPRA data."
  },
  {
+  "id": "broker-integrations",
   "area": "Trading",
   "feature": "Broker integrations",
   "tv": "100+ brokers (33 visible to US visitors) including NinjaTrader, Tradovate, Interactive Brokers, TradeStation, OANDA, Kraken and Coinbase.",
@@ -1089,6 +1210,7 @@
   "why": "Buyers already automate through webhooks. Add a few high-demand brokers later, prop-firm futures platforms first."
  },
  {
+  "id": "native-auto-trading-from-alerts",
   "area": "Trading",
   "feature": "Native auto-trading from alerts",
   "tv": "None. TradingView says it is 'considering' it with 'no ETA'; users route webhooks to third parties.",
@@ -1098,6 +1220,7 @@
   "why": "A real gap, but it brings broker certification, liability and regulatory questions. Partner with TradersPost-style services first."
  },
  {
+  "id": "prop-firm-distribution",
   "area": "Trading",
   "feature": "Prop-firm distribution",
   "tv": "Brokers sponsor free TradingView plans. TopstepX embeds TradingView charts but cannot load custom or purchased indicators.",
@@ -1107,6 +1230,7 @@
   "why": "Prop-firm traders are a big buyer group that TradingView's own license locks out of paid scripts on TopstepX."
  },
  {
+  "id": "paper-trading",
   "area": "Trading",
   "feature": "Paper trading",
   "tv": "Multi-asset simulated accounts with custom balance, commission and leverage.",
@@ -1116,6 +1240,7 @@
   "why": "Useful for trials of vendor strategies."
  },
  {
+  "id": "depth-of-market-and-chart-trading",
   "area": "Trading",
   "feature": "Depth of market and chart trading",
   "tv": "DOM with Tier-2 brokers; order entry, brackets and drag-to-modify on the chart.",
@@ -1125,6 +1250,7 @@
   "why": "Only matters once broker trading exists."
  },
  {
+  "id": "watchlists",
   "area": "Watchlists",
   "feature": "Watchlists",
   "tv": "Basic: 1 list of 30 symbols. Paid: unlimited lists of 1,000 symbols with sections, 7 flag colors and custom columns.",
@@ -1134,6 +1260,7 @@
   "why": "Basic lists at launch; columns and flags follow."
  },
  {
+  "id": "import-tradingview-watchlists",
   "area": "Watchlists",
   "feature": "Import TradingView watchlists",
   "tv": "Paid plans export watchlists as .txt files; Basic cannot export.",
@@ -1143,6 +1270,7 @@
   "why": "Removes a switching cost in one click. Also accept pasted symbol lists for free users."
  },
  {
+  "id": "portfolios",
   "area": "Watchlists",
   "feature": "Portfolios",
   "tv": "Portfolio tracking since Jun 2025 with benchmarks, dividends and share links.",
@@ -1152,6 +1280,7 @@
   "why": "Different job."
  },
  {
+  "id": "ideas-and-minds",
   "area": "Community",
   "feature": "Ideas and Minds",
   "tv": "Published chart ideas, video ideas and per-symbol short posts; about 5,300 publications a day.",
@@ -1161,6 +1290,7 @@
   "why": "A social network needs moderation at scale and is not why anyone switches."
  },
  {
+  "id": "chats",
   "area": "Community",
   "feature": "Chats",
   "tv": "One-to-one and private group chats relaunched Aug 2026; public chats retired 30 Sep 2026; Streams appear discontinued.",
@@ -1170,6 +1300,7 @@
   "why": "Vendors already run their communities on Discord."
  },
  {
+  "id": "trading-contests",
   "area": "Community",
   "feature": "Trading contests",
   "tv": "Community contests (Aug 2026) and The Leap real-money contests.",
@@ -1179,6 +1310,7 @@
   "why": "Marketing program, not a switching reason."
  },
  {
+  "id": "vendor-announcements",
   "area": "Community",
   "feature": "Vendor announcements",
   "tv": "Release notes on script pages.",
@@ -1188,6 +1320,7 @@
   "why": "In-app notices to a vendor's own customers, which TradingView's link rules restrict."
  },
  {
+  "id": "reviews-and-ratings",
   "area": "Community",
   "feature": "Reviews and ratings",
   "tv": "Boosts and comments; comments need phone verification.",
@@ -1197,6 +1330,7 @@
   "why": "Trust signals for a future marketplace."
  },
  {
+  "id": "web-app",
   "area": "Apps",
   "feature": "Web app",
   "tv": "Full platform on the web.",
@@ -1206,6 +1340,7 @@
   "why": "Where everything starts. Desktop browsers first."
  },
  {
+  "id": "mobile-web-and-pwa",
   "area": "Apps",
   "feature": "Mobile web and PWA",
   "tv": "Native apps: iOS 4.8 stars from 414K ratings, Android 50M+ downloads, 19 languages.",
@@ -1215,6 +1350,7 @@
   "why": "Customers check signals on their phones. A responsive web app with push covers launch."
  },
  {
+  "id": "native-mobile-apps",
   "area": "Apps",
   "feature": "Native mobile apps",
   "tv": "Native iOS and Android apps with home-screen widgets.",
@@ -1224,6 +1360,7 @@
   "why": "Expensive. Build once retention proves out."
  },
  {
+  "id": "desktop-app",
   "area": "Apps",
   "feature": "Desktop app",
   "tv": "Windows, macOS and Linux (v3.4.1, Sep 2026) with native multi-monitor.",
@@ -1233,6 +1370,7 @@
   "why": "A wrapper around the web app is enough when asked for."
  },
  {
+  "id": "telegram-mini-app",
   "area": "Apps",
   "feature": "Telegram mini app",
   "tv": "TradingView mini app inside Telegram since Apr 2025.",
@@ -1242,6 +1380,7 @@
   "why": "Alert delivery to Telegram covers the need."
  },
  {
+  "id": "accounts-sign-in-and-2fa",
   "area": "Account",
   "feature": "Accounts, sign-in and 2FA",
   "tv": "Email and social sign-in; 2FA is required before webhooks work.",
@@ -1251,6 +1390,7 @@
   "why": "Webhooks move money, so 2FA ships at launch."
  },
  {
+  "id": "free-tier-plus-one-membership",
   "area": "Account",
   "feature": "Free tier plus one membership",
   "tv": "Basic free; Essential $12.95, Plus $29.95, Premium $59.95, Ultimate $199.95 a month billed annually (monthly billing costs more); prices rose about 17 to 20% on 10 Apr 2026.",
@@ -1260,6 +1400,7 @@
   "why": "One paid plan is required for real-time data, data packages and invite-only scripts, so billing ships at launch. Fair-use limits replace tiers."
  },
  {
+  "id": "localization",
   "area": "Account",
   "feature": "Localization",
   "tv": "Interface in many languages (19 in the mobile apps).",
@@ -1269,6 +1410,7 @@
   "why": "Many vendor audiences are non-English. Add the top languages from vendor data."
  },
  {
+  "id": "help-center-and-support",
   "area": "Account",
   "feature": "Help center and support",
   "tv": "Help center; no support on Basic, ticket support on paid plans, weekdays only.",
@@ -1278,6 +1420,7 @@
   "why": "Vendors will forward their customers' problems to us."
  },
  {
+  "id": "ai-migration-assistant",
   "area": "AI",
   "feature": "AI migration assistant",
   "tv": "Nothing comparable for porting.",
@@ -1287,6 +1430,7 @@
   "why": "Suggests fixes for anything the compatibility checker flags. Speeds up onboarding."
  },
  {
+  "id": "ai-copilot",
   "area": "AI",
   "feature": "AI copilot",
   "tv": "AI Copilot add-on (28 Sep 2026) reads data, draws levels, creates alerts and writes and applies Pine; not on mobile.",
@@ -1296,6 +1440,7 @@
   "why": "Expected eventually. Also a threat: easy Pine generation erodes demand for simple paid scripts."
  },
  {
+  "id": "public-api-and-mcp-server",
   "area": "AI",
   "feature": "Public API and MCP server",
   "tv": "MCP server in public beta since 16 Sep 2026: 35 tools, Essential and up, delayed data.",
@@ -1305,6 +1450,7 @@
   "why": "Cheap once our API exists, and agents are becoming a way users operate tools."
  },
  {
+  "id": "ai-screener-and-summaries",
   "area": "AI",
   "feature": "AI screener and summaries",
   "tv": "AI Screener (Aug 2026) and AI summaries of news, filings and documents.",
@@ -1314,6 +1460,7 @@
   "why": "Tied to fundamentals and news we will not carry early."
  },
  {
+  "id": "widgets-and-charting-libraries",
   "area": "B2B products",
   "feature": "Widgets and charting libraries",
   "tv": "22 free widgets, open-source Lightweight Charts, Advanced Charts (free only with attribution on public, non-paywalled sites) and the paid Trading Platform library.",
