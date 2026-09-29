@@ -1160,6 +1160,36 @@
   "why": "Futures and FX traders avoid trading into CPI or payrolls. License a feed or embed a provider."
  },
  {
+  "id": "breaking-news-markers",
+  "area": "Research and news",
+  "feature": "Breaking news markers",
+  "tv": "Event markers on the chart for earnings, dividends, splits, economic events and news.",
+  "grade": "P0",
+  "effort": "L",
+  "who": "Trader",
+  "why": "When a market-moving headline breaks, an icon sits above the bar it landed on; clicking it shows the headline, source, time and the price move that followed. Events on one bar stack into one icon with a count. Every affected market gets the marker, so a Fed headline shows on ES, NQ, gold and BTC."
+ },
+ {
+  "id": "market-moving-headline-feed",
+  "area": "Research and news",
+  "feature": "Market-moving headline feed",
+  "tv": "News Flow from 65+ providers; news alerts on paid plans.",
+  "grade": "P0",
+  "effort": "M",
+  "who": "Us",
+  "why": "The markers are only as good as the feed. License one that flags market-moving headlines, add our own importance scoring and confirm with the price reaction. Licensing cost was not part of this research."
+ },
+ {
+  "id": "news-alerts",
+  "area": "Research and news",
+  "feature": "News alerts",
+  "tv": "News alerts on up to 10 news flows for paid plans (Oct 2025, expanded May 2026).",
+  "grade": "P1",
+  "effort": "S",
+  "who": "Trader",
+  "why": "Push, Telegram and Discord alerts when a marked event hits a symbol on your watchlist. Reuses the alert service."
+ },
+ {
   "id": "news-feed",
   "area": "Research and news",
   "feature": "News feed",
@@ -1167,7 +1197,7 @@
   "grade": "P3",
   "effort": "L",
   "who": "Trader",
-  "why": "Expensive licensing and low differentiation."
+  "why": "A full news panel costs more to license than the headline feed the markers need, and differentiates little."
  },
  {
   "id": "earnings-dividends-and-ipo-calendars",

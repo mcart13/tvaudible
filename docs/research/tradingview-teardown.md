@@ -5,7 +5,7 @@ Research brief, 29 September 2026. Prepared for Mason. What TradingView offers, 
 ## Bottom line
 
 - **Is the fee real?** Yes. It is Section 22A of TradingView's Terms of Use, word for word. Once a vendor passes 100 users every user is billed, so 101 users cost $3,024.95 a month. No effective date is published; the first count could be 30 September 2026.
-- **Should we build a full TradingView clone?** No. TradingView has 21 chart types, 110+ drawing tools, 100+ brokers and 3.5M instruments. It claims 100M users and ships something new most weeks. Build the slice vendors and their customers need. Of the 147 features graded below, 53 are launch items.
+- **Should we build a full TradingView clone?** No. TradingView has 21 chart types, 110+ drawing tools, 100+ brokers and 3.5M instruments. It claims 100M users and ships something new most weeks. Build the slice vendors and their customers need. Of the 150 features graded below, 55 are launch items.
 - **Is there a market?** Likely, and the $5 share widens it. TradingView's fee only hits vendors over 100 users outside Paid Spaces. For them it takes 50% to 109% of revenue at most major vendors' published prices, and fewer than 5% of Paid Spaces applicants get in. The $5 per member also gives smaller vendors a reason to move. The catch is that their customers need a membership, while TradingView's free plan runs invite-only scripts at no charge. None of this is proven until vendors commit.
 - **Are we first?** No. LuxAlgo, one of the biggest vendors, launched a Pine-native charting platform on 31 August 2026 and owns the leading open-source Pine engine. Our opening is neutrality: other vendors will not want to hand their code and customers to their largest competitor.
 - **Can vendors' Pine code run outside TradingView?** Yes. PyneCore's published tests show it matching TradingView's output on 770 of 819 real scripts. No engine comes with a platform, though. Rendering, alerts, data and access control are ours to build.
@@ -278,9 +278,25 @@ How it should work:
 
 Viewers need a membership to join invite-only rooms, plus the data packages for whatever the host shows. Every popular futures room sells CME packages.
 
+## Breaking news markers
+
+When a market-moving headline breaks, an icon appears above the bar where it landed. Clicking it shows the headline, the source, the publication time and how price moved after it. TradingView already puts news and event markers on its charts, so the edge has to come from choosing only what moves markets and marking it everywhere it matters.
+
+How it should work:
+
+- **"Prominent" needs a rule.** Use a feed that flags market-moving headlines, score each headline for importance ourselves and confirm it with the price reaction in the minutes after. Only events that pass show by default; a setting can show everything.
+- **Mark every affected market.** A Fed or tariff headline belongs on ES, NQ, the dollar, gold and BTC as well as any single symbol it names. Tag each event with the markets it touches.
+- **Place it by publication time.** The icon sits on the bar that contains the headline's timestamp. On higher timeframes several events can land on one bar, so stack them into one icon with a count.
+- **Show it live and in history.** New events appear on open charts as they break, and scrolling back shows past ones. Historical markers need an archive license as well as a live one.
+- **Label it as publication time.** A marker next to a big candle reads as the cause of the move. Show the source and time, and never state causation.
+- **Keep scheduled releases separate.** CPI, payrolls and rate decisions come from the economic calendar, graded P2. Move it up if you want those marked at launch too.
+- **Latency decides its value.** If the feed lands 30 seconds after the move, markers explain history but won't help anyone trade the event. Measure feed latency against price moves before promising real-time markers.
+
+I don't know what this costs. News licensing was not part of the research, so get quotes and display terms from two or three market-moving headline feeds during validation. Scoring headlines with a model also costs money per headline; measure that in the pilot.
+
 ## Feature inventory and grades
 
-Every TradingView feature the research found, graded for a vendor-first competitor. 147 features: 53 P0 Launch, 36 P1 Fast follow, 33 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
+Every TradingView feature the research found, graded for a vendor-first competitor. 150 features: 55 P0 Launch, 37 P1 Fast follow, 33 P2 Later, 19 P3 Park and 6 Skip. The launch list looks long because the Pine runtime alone accounts for 17 items. Most of the rest are small.
 
 On the published page, the owner and contributors can change any grade and save their decisions. Saved decisions are stored with the page, and Claude can pull them into this file.
 
@@ -471,8 +487,11 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 
 | Feature | Grade | Effort | For | TradingView today | Why this grade |
 |---|---|---|---|---|---|
+| Breaking news markers | P0 Launch | L | Trader | Event markers on the chart for earnings, dividends, splits, economic events and news. | When a market-moving headline breaks, an icon sits above the bar it landed on; clicking it shows the headline, source, time and the price move that followed. Events on one bar stack into one icon with a count. Every affected market gets the marker, so a Fed headline shows on ES, NQ, gold and BTC. |
+| Market-moving headline feed | P0 Launch | M | Us | News Flow from 65+ providers; news alerts on paid plans. | The markers are only as good as the feed. License one that flags market-moving headlines, add our own importance scoring and confirm with the price reaction. Licensing cost was not part of this research. |
+| News alerts | P1 Fast follow | S | Trader | News alerts on up to 10 news flows for paid plans (Oct 2025, expanded May 2026). | Push, Telegram and Discord alerts when a marked event hits a symbol on your watchlist. Reuses the alert service. |
 | Economic calendar | P2 Later | S | Trader | Global economic events with forecasts and actuals, plus chart event markers. | Futures and FX traders avoid trading into CPI or payrolls. License a feed or embed a provider. |
-| News feed | P3 Park | L | Trader | News Flow from 65+ providers with AI summaries of filings. | Expensive licensing and low differentiation. |
+| News feed | P3 Park | L | Trader | News Flow from 65+ providers with AI summaries of filings. | A full news panel costs more to license than the headline feed the markers need, and differentiates little. |
 | Earnings, dividends and IPO calendars | P3 Park | M | Trader | Corporate event calendars. | Stock-only and needs a data license. |
 | Fundamentals and ratings | P3 Park | L | Trader | Statements, 100+ metrics, Fundamental Graphs, analyst estimates, Fitch and Moody's ratings, Quartr documents with AI summaries. | Different customer. Link out. |
 | Options tools | Skip | - | Trader | Chains with greeks, strategy builder, volatility curves, options volume profile. | Different product and expensive OPRA data. |
@@ -541,7 +560,7 @@ Effort: S is under 2 engineer-weeks, M is 2 to 6, L is 6 to 16 and XL is more th
 
 ## Recommended launch scope
 
-The durations below are planning assumptions, not quotes. They assume about 6 to 8 experienced engineers and a licensed engine. Building the engine in-house adds months. Live chart sessions were added after these estimates; by the effort scale in the feature grades they add roughly 12 to 34 engineer-weeks to the pilot.
+The durations below are planning assumptions, not quotes. They assume about 6 to 8 experienced engineers and a licensed engine. Building the engine in-house adds months. Live chart sessions and breaking news markers were added after these estimates; by the effort scale in the feature grades they add roughly 20 to 56 engineer-weeks to the pilot.
 
 ### Validate (Weeks 0 to 3)
 - Get written answers from TradingView support on the effective date, whether Paid Spaces subscribers count and whether free grants count.
@@ -553,6 +572,7 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Ask CME about non-pro eligibility and non-display classification. Ask Cboe about the vendor waiver.
 - Ask CME and each exchange we carry to confirm in writing that live rooms need no extra license when they share chart state only and every viewer loads data under their own license.
 - Get counsel's view on paid live trading rooms.
+- Get quotes and display terms from two or three market-moving headline feeds, and measure their latency against price moves.
 
 ### Pilot (Months 1 to 4)
 - Every P0 item in the feature grades.
@@ -563,6 +583,7 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Public access API with Whop sync, the migration kit, revenue share tracking and code custody.
 - Free tier and membership billing with fair-use limits.
 - Live chart sessions with invite-only rooms, follow mode, host controls and the collaboration switch. Every viewer is checked for data and script access, and trade markers stream live.
+- Breaking news markers from a licensed market-moving headline feed, placed on every affected market's chart.
 - Vendor vetting, conduct rules and 2FA.
 
 ### Launch (Months 4 to 7)
@@ -571,7 +592,7 @@ The durations below are planning assumptions, not quotes. They assume about 6 to
 - Multi-chart layouts (4, then 8), sync, templates, seconds charts, range bars and volume profile.
 - US stocks through Cboe One. CME futures and continuous contracts once committed demand covers the license.
 - Vendor payouts, checkout sync beyond Whop (Stripe, LaunchPass, Gumroad), Discord role sync, vendor analytics, PWA with push and a first prop-firm integration.
-- Session chat.
+- Session chat and news alerts.
 
 ### Scale (Months 7 to 12)
 - The P2 items, in the order vendors ask for them.
@@ -592,6 +613,7 @@ The model: a free tier, one paid membership and market data add-ons. No tiers.
 - Required for real-time data and for buying data packages.
 - Required to use invite-only scripts and to host them. Hosting has no per-user cost, however many users a vendor has.
 - Required to join invite-only live rooms. Viewers also need the data packages for whatever the host shows.
+- Includes breaking news markers. Whether the free tier can show them depends on the news feed's license.
 - Everything else sits in one plan, with fair-use limits on alerts and charts per layout instead of tiers.
 
 **Add-ons**
@@ -631,6 +653,7 @@ Severity is my judgment of impact times likelihood.
 - **Medium: Trademark and naming.** "PINE SCRIPT" is a registered US trademark of TradingView (Reg. No. 7,559,746). Use it only to describe compatibility, with the ® and a disclaimer. Keep "Pine", "TV" and "TradingView" out of the product name and domain.
 - **Medium: Live rooms could leak data.** If room traffic ever carries the host's prices, a recording or a screenshot stream, we redistribute data to viewers who have not paid for it. Mitigation: rooms carry chart state only, and every viewer's data stream is checked against that viewer's license.
 - **Medium: Paid trading rooms draw regulators.** Rooms where hosts call trades for paying members can fall under trading-advice rules; in the US, futures advice is overseen by the CFTC and NFA. Mitigation: host terms that make hosts responsible for their content, required disclaimers, no unverified performance claims and counsel before launch.
+- **Medium: News markers can mislead.** A late, wrong or overhyped marker beside a big candle reads as the cause of the move. Mitigation: show the source and publication time, never state causation and measure feed latency before promising real-time markers.
 - **Medium: Opening-bell load.** Thousands of viewers join the same room in the same minute, and each opens their own data stream. Mitigation: publish-subscribe fan-out for room state, snapshots for late joiners and load tests at real room sizes.
 - **Medium: Webhooks move money.** A hijacked account can fire trades through a customer's bot. Mitigation: 2FA at launch, signed webhooks and alert audit logs.
 - **Low: TradingView pushback on vendors.** House Rules ban links in script content. The only allowed pointer is a link in "Author's instructions" to the vendor's own page, plus the Signature field on Premium and up. The $5 share gives vendors a reason to push harder, so they must move customers through their own sites, Discord and email. TradingView may keep hosting a departed vendor's scripts under the Section 22 license, which is irrevocable but not exclusive.
@@ -664,6 +687,8 @@ Severity is my judgment of impact times likelihood.
 | Compute cost per member | Whether $14.99 with a $5 share leaves a margin | Measure in the pilot before announcing the share |
 | Exchange view on live rooms | Whether rooms need extra licenses | Written confirmation from CME and each exchange we carry |
 | Whether room access earns the $5 share | Cost of the share and the creator pitch | Decide before launch |
+| News feed cost and display terms | Whether news markers fit the membership price | Quotes from two or three market-moving headline feeds |
+| Headline latency | Whether markers help live trading or only explain history | Measure against price moves during validation |
 | Whether other platforms offer live co-viewing | Positioning | Not covered by this research. Check before marketing it as unique. |
 | How members who use several vendors are credited | The real cost of the $5 share | Decide before launch: one payout per member per month |
 
